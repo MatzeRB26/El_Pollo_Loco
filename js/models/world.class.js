@@ -1,4 +1,4 @@
-class World {
+export class World {
     character = new Character();
     enemies = [
         new Chicken(), 

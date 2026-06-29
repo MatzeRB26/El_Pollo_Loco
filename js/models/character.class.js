@@ -1,4 +1,4 @@
-class Character extends MoveableObject {
+export class Character extends MoveableObject {
     
     height = 280;
     y = 155;

@@ -1,4 +1,4 @@
-class Chicken extends MoveableObject {
+export class Chicken extends MoveableObject {
     
     height = 60;
     width = 80;

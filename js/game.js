@@ -1,6 +1,6 @@
 let canvas; // eine variable für das Bildformat(720x480px)
 let ctx; //ctx steht für context
-let character = new MoveableObject();
+let world = new World();
 
 
 
@@ -9,5 +9,5 @@ function init(){
     ctx = canvas.getContext('2d');
     
     
-    
+    console.log('My Character is', world.character);
 }

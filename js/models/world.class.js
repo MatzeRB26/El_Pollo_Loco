@@ -9,6 +9,8 @@ class World {
         new Cloud()
     ];
     backgroundObjects = [
+        new BackgroundObject('assets/img/5_background/layers/3_third_layer/1.png', 0),
+        new BackgroundObject('assets/img/5_background/layers/2_second_layer/1.png', 0),
         new BackgroundObject('assets/img/5_background/layers/1_first_layer/1.png', 0)
     ];
     canvas;
@@ -24,10 +26,10 @@ class World {
 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
+        this.addObjectsToMap(this.backgroundObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.clouds);
         this.addObjectsToMap(this.enemies);
-        this.addObjectsToMap(this.backgroundObjects);
 
         let self = this; // diese function arbeitet erst dann wenn alles vorgezeichnet ist aus dem DrawImage(draw wird immer wieder aufgerufen)
         requestAnimationFrame(function(){

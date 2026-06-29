@@ -1,6 +1,6 @@
 let canvas; // eine variable für das Bildformat(720x480px)
 let ctx; //ctx steht für context
-let character = new Image();
+let character = new MoveableObject();
 
 
 
@@ -9,11 +9,5 @@ function init(){
     ctx = canvas.getContext('2d');
     
     
-    
-    
-    character.src = 'assets/img/2_character_pepe/2_walk/W-21.png';
-
-    
-    ctx.drawImage(character, 20, 20, 50, 150);
     
 }

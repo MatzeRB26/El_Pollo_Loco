@@ -4,6 +4,7 @@ import { Chicken } from "./models/chicken.class.js";
 import { World } from "./models/world.class.js";
 import { Keyboard } from "./models/keyboard.class.js";
 import { level1 } from "./levels/level1.js";
+import { Endboss } from "./models/endboss.class.js";
 
 
 let canvas; // eine variable für das Bildformat(720x480px)

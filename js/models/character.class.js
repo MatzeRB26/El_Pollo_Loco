@@ -4,6 +4,7 @@ export class Character extends MoveableObject {
     
     height = 280;
     y = 155;
+    speed = 10;
     IMAGES_WALKING = [
         'assets/img/2_character_pepe/2_walk/W-21.png',
         'assets/img/2_character_pepe/2_walk/W-22.png',
@@ -12,23 +13,26 @@ export class Character extends MoveableObject {
         'assets/img/2_character_pepe/2_walk/W-25.png',
         'assets/img/2_character_pepe/2_walk/W-26.png'
     ];
-    
+    world;
 
     constructor(){
         super().loadImage('assets/img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
 
         this.animate();
-
-    }
+        }
 
     animate(){
     setInterval(() => {
-        let i = this.currentImage % this.IMAGES_WALKING.length; // let i = 7 : 6 = Rest 1
-        let path = this.IMAGES_WALKING[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
-    }, 100);
+
+        if (this.world.keyboard.RIGHT){
+        this.x += this.speed; 
+            let i = this.currentImage % this.IMAGES_WALKING.length; // let i = 7 : 6 = Rest 1
+            let path = this.IMAGES_WALKING[i];
+            this.img = this.imageCache[path];
+            this.currentImage++;
+        }
+        }, 100);
     }
     
     jump(){

@@ -13,11 +13,6 @@ export class MoveableObject {
         this.img.src = path;
     }
 
-/** 
-* 
-*@param {Array} arr - ['img/image1.png', 'img/image2.png', ...]
-*/
-
     loadImages(arr){
         arr.forEach((path) => {
             let img = new Image();

@@ -18,10 +18,9 @@ export class MoveableObject {
 
     loadImages(arr){
         arr.forEach((path) => {
-
-        let image = new Image();
-        img.src = path;
-        this.imageCache[path] = path;
+            let img = new Image();
+            img.src = path;
+            this.imageCache[path] = img;
         });
     }
 

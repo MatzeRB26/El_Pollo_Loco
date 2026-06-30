@@ -24,7 +24,7 @@ export class World {
     canvas;
     ctx;
     keyboard;
-    camera_x;
+    camera_x = 0;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -42,11 +42,17 @@ export class World {
     draw(){
 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.ctx.translate(this.camera_x, 0);
+
         
         this.addObjectsToMap(this.backgroundObjects);
+
         this.addToMap(this.character);
         this.addObjectsToMap(this.clouds);
         this.addObjectsToMap(this.enemies);
+
+        this.ctx.translate(-this.camera_x, 0);
 
         let self = this; // diese function arbeitet erst dann wenn alles vorgezeichnet ist aus dem DrawImage(draw wird immer wieder aufgerufen)
         requestAnimationFrame(function(){

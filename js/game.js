@@ -3,6 +3,7 @@ import { Character } from "./models/character.class.js";
 import { Chicken } from "./models/chicken.class.js";
 import { World } from "./models/world.class.js";
 import { Keyboard } from "./models/keyboard.class.js";
+import { level1 } from "./levels/level1.js";
 
 
 let canvas; // eine variable für das Bildformat(720x480px)
@@ -11,7 +12,7 @@ let keyboard = new Keyboard();
 
 function init(){
     canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard);
+    world = new World(canvas, keyboard, level1);
 }
 init();
 

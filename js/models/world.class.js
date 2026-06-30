@@ -2,54 +2,23 @@ import { Character } from "./character.class.js";
 import { Chicken } from "./chicken.class.js";
 import { Cloud } from "./cloud.class.js";
 import { BackgroundObject } from "./background-object.class.js";
+import { level1 } from "../levels/level1.js";
 
 export class World {
     character = new Character();
-    enemies = [
-        new Chicken(), 
-        new Chicken(), 
-        new Chicken(),
-    ];
-
-    clouds = [
-        new Cloud()
-    ];
-
-    backgroundObjects = [
-        new BackgroundObject('assets/img/5_background/layers/air.png', -720),
-        new BackgroundObject('assets/img/5_background/layers/3_third_layer/2.png', -720),
-        new BackgroundObject('assets/img/5_background/layers/2_second_layer/2.png', -720),
-        new BackgroundObject('assets/img/5_background/layers/1_first_layer/2.png', -720),
-
-        new BackgroundObject('assets/img/5_background/layers/air.png', 0),
-        new BackgroundObject('assets/img/5_background/layers/3_third_layer/1.png', 0),
-        new BackgroundObject('assets/img/5_background/layers/2_second_layer/1.png', 0),
-        new BackgroundObject('assets/img/5_background/layers/1_first_layer/1.png', 0),
-        new BackgroundObject('assets/img/5_background/layers/air.png', 720),
-        new BackgroundObject('assets/img/5_background/layers/3_third_layer/2.png', 720),
-        new BackgroundObject('assets/img/5_background/layers/2_second_layer/2.png', 720),
-        new BackgroundObject('assets/img/5_background/layers/1_first_layer/2.png', 720),
-
-        new BackgroundObject('assets/img/5_background/layers/air.png', 720*2),
-        new BackgroundObject('assets/img/5_background/layers/3_third_layer/1.png', 720*2),
-        new BackgroundObject('assets/img/5_background/layers/2_second_layer/1.png', 720*2),
-        new BackgroundObject('assets/img/5_background/layers/1_first_layer/1.png', 720*2),
-        new BackgroundObject('assets/img/5_background/layers/air.png', 720*3),
-        new BackgroundObject('assets/img/5_background/layers/3_third_layer/2.png', 720*3),
-        new BackgroundObject('assets/img/5_background/layers/2_second_layer/2.png', 720*3),
-        new BackgroundObject('assets/img/5_background/layers/1_first_layer/2.png', 720*3),
-
-
-    ];
+    enemies = level1.enemies;
+    clouds = level1.clouds;
+    backgroundObjects = level1.backgroundObjects; 
     canvas;
     ctx;
     keyboard;
     camera_x = 0;
 
-    constructor(canvas, keyboard) {
+    constructor(canvas, keyboard, level) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.level = level;
         this.draw();
         this.setWorld();
     }

@@ -13,52 +13,25 @@ let keyboard = new Keyboard();
 
 function init(){
     canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard, level1);
+    world = new World(canvas, Keyboard, level1);
 }
 init();
 
 
-window.addEventListener('keydown', (e) => {
-    if (e.keyCode == 39){
-        keyboard.RIGHT = true;
-    }
-
-    if (e.keyCode == 37){
-        keyboard.LEFT = true;
-    }
-
-    if (e.keyCode == 38){
-        keyboard.UP = true;
-    }
-
-    if (e.keyCode == 40){
-        keyboard.DOWN = true;
-    }
-
-    if (e.keyCode == 32){
-        keyboard.SPACE = true;
-    }
+window.addEventListener("keydown", (e) => {
+    if (e.code == "ArrowLeft") Keyboard.LEFT = true;
+    if (e.code == "ArrowRight") Keyboard.RIGHT = true;
+    if (e.code == "ArrowUp") Keyboard.UP = true;
+    if (e.code == "ArrowDown") Keyboard.DOWN = true;
+    if (e.code == "Space") Keyboard.SPACE = true;
+    if (e.code == "KeyD") Keyboard.D = true;
 });
 
-    window.addEventListener('keyup', (e) => {
-    if (e.keyCode == 39){
-        keyboard.RIGHT = false;
-    }
-
-    if (e.keyCode == 37){
-        keyboard.LEFT = false;
-    }
-
-    if (e.keyCode == 38){
-        keyboard.UP = false;
-    }
-
-    if (e.keyCode == 40){
-        keyboard.DOWN = false;
-    }
-
-    if (e.keyCode == 32){
-        keyboard.SPACE = false;
-    }
+window.addEventListener("keyup", (e) => {
+    if (e.code == "ArrowLeft") Keyboard.LEFT = false;
+    if (e.code == "ArrowRight") Keyboard.RIGHT = false;
+    if (e.code == "ArrowUp") Keyboard.UP = false;
+    if (e.code == "ArrowDown") Keyboard.DOWN = false;
+    if (e.code == "Space") Keyboard.SPACE = false;
+    if (e.code == "KeyD") Keyboard.D = false;
 });
-

@@ -3,7 +3,6 @@ import { Chicken } from "./chicken.class.js";
 import { Cloud } from "./cloud.class.js";
 import { BackgroundObject } from "./background-object.class.js";
 
-
 export class World {
     character = new Character();
     enemies = [

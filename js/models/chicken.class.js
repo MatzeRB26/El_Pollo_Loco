@@ -1,3 +1,5 @@
+import { MoveableObject } from "./moveable-object.class.js";
+
 export class Chicken extends MoveableObject {
     
     height = 60;
@@ -5,9 +7,7 @@ export class Chicken extends MoveableObject {
     y = 365;
 
     constructor() {
-        super().loadImage(
-            "assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
-        );
+        super().loadImage('assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
 
         this.x = 200 + Math.random() * 500;
     }

@@ -1,3 +1,9 @@
+import { Character } from "./character.class.js";
+import { Chicken } from "./chicken.class.js";
+import { Cloud } from "./cloud.class.js";
+import { BackgroundObject } from "./background-object.class.js";
+
+
 export class World {
     character = new Character();
     enemies = [
@@ -5,9 +11,11 @@ export class World {
         new Chicken(), 
         new Chicken(),
     ];
+
     clouds = [
         new Cloud()
     ];
+
     backgroundObjects = [
         new BackgroundObject('assets/img/5_background/layers/air.png', 0),
         new BackgroundObject('assets/img/5_background/layers/3_third_layer/1.png', 0),

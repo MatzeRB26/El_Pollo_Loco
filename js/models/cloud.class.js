@@ -1,3 +1,5 @@
+import { MoveableObject } from "./moveable-object.class.js";
+
 export class Cloud extends MoveableObject {
     y = 20;
 

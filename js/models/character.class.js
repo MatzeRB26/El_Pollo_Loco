@@ -1,3 +1,5 @@
+import { MoveableObject } from "./moveable-object.class.js";
+
 export class Character extends MoveableObject {
     
     height = 280;

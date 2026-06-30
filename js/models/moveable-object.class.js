@@ -5,7 +5,6 @@ export class MoveableObject {
     height =  150;
     width = 100;
 
-
     loadImage(path){
         this.img = new Image();
         this.img.src = path;
@@ -14,7 +13,6 @@ export class MoveableObject {
     moveRight() {
         
     }
-
 
     moveLeft(){
         

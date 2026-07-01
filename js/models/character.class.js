@@ -22,7 +22,7 @@ export class Character extends MoveableObject {
         "assets/img/2_character_pepe/3_jump/J-36.png",
         "assets/img/2_character_pepe/3_jump/J-37.png",
         "assets/img/2_character_pepe/3_jump/J-38.png",
-        "assets/img/2_character_pepe/3_jump/J-39.png",
+        "assets/img/2_character_pepe/3_jump/J-39.png"
     ];
 
     world;
@@ -62,6 +62,6 @@ export class Character extends MoveableObject {
         }, 50);
     }
 
-    
+
     jump() {}
 }

@@ -1,4 +1,5 @@
 import { MoveableObject } from "./moveable-object.class.js";
+import { StatusBar } from "./status-bar.class.js"
 
 export class Character extends MoveableObject {
     height = 280;
@@ -37,12 +38,20 @@ export class Character extends MoveableObject {
         'assets/img/2_character_pepe/5_dead/D-57.png'
     ];
 
+    IMAGES_HURT = [
+        'assets/img/2_character_pepe/4_hurt/H-41.png',
+        'assets/img/2_character_pepe/4_hurt/H-42.png',
+        'assets/img/2_character_pepe/4_hurt/H-43.png'
+    ];
+
     world;
 
     constructor() {
-        super().loadImage("assets/img/2_character_pepe/2_walk/W-21.png");
+        super();
+        this.loadImage("assets/img/2_character_pepe/2_walk/W-21.png");
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
+        this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.applyGravity();
         this.animate();
@@ -65,8 +74,10 @@ export class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.isDead){
+            if (this.isDead()){
                 this.playAnimation(this.IMAGES_DEAD);
+            } else if (this.isHurt()){
+                this.playAnimation(this.IMAGES_HURT);
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
             } else {
@@ -74,7 +85,7 @@ export class Character extends MoveableObject {
                     this.playAnimation(this.IMAGES_WALKING);
                 }
             }
-        }, 50);
+        }, 60);
     }
 
 

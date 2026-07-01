@@ -1,10 +1,13 @@
+import { DrawableObject } from "./models/drawable-object.class.js";
 import { MoveableObject } from "./models/moveable-object.class.js";
+import { StatusBar } from "./models/status-bar.class.js";
 import { Character } from "./models/character.class.js";
 import { Chicken } from "./models/chicken.class.js";
 import { World } from "./models/world.class.js";
 import { Keyboard } from "./models/keyboard.class.js";
-import { level1 } from "./levels/level1.js";
 import { Endboss } from "./models/endboss.class.js";
+import { level1 } from "./levels/level1.js";
+
 
 
 let canvas; // eine variable für das Bildformat(720x480px)

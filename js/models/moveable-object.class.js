@@ -1,4 +1,5 @@
 import { DrawableObject } from "./drawable-object.class.js";
+import { ThrowableObject } from "./throwable-object.class.js";
 
 export class MoveableObject extends DrawableObject {
     speed = 0.15;
@@ -18,9 +19,14 @@ export class MoveableObject extends DrawableObject {
         }, 1000 / 25);
     }
 
-    isAboveGround(){
+    isAboveGround() {
+        if (this instanceof ThrowableObject){
+            return true;
+        } else {
         return this.y < 150;
+        }
     }
+    
 
     isColliding(mo){ // Character collidiert mit dem Hünchen
         return this.x + this.width > mo.x &&

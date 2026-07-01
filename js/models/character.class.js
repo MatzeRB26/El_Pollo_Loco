@@ -1,4 +1,5 @@
 import { MoveableObject } from "./moveable-object.class.js";
+import { ThrowableObject } from "./throwable-object.class.js";
 import { StatusBar } from "./status-bar.class.js"
 
 export class Character extends MoveableObject {

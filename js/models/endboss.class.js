@@ -5,7 +5,7 @@ export class Endboss extends MoveableObject{
     height = 400;
     width = 250;
     y = 60;
-    showFrame = true;
+    showHitBox = true;
 
 
     IMAGES_WALKING = [

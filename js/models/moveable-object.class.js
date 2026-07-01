@@ -8,7 +8,7 @@ export class MoveableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
-    showFrame = false;
+    showHitBox = false;
     speedY = 0;
     acceleration = 2.5;
 
@@ -37,13 +37,20 @@ export class MoveableObject {
 
     drawFrame(ctx){
 
-    if (this.showFrame){
+    if (this.showHitBox){
     ctx.beginPath();
     ctx.lineWidth = '5';
     ctx.strokeStyle = 'blue';
     ctx.rect(this.x, this.y, this.width, this.height);
     ctx.stroke();
         }
+    }
+
+    isColliding(mo){ // Character collidiert mit dem Hünchen
+        return this.x + this.width > mo.x &&
+        this.y + this.height > mo.y &&
+        this.x < mo.x &&
+        this.y < mo.y + mo.height;
     }
 
     loadImages(arr){

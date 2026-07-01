@@ -5,7 +5,7 @@ export class Chicken extends MoveableObject {
     height = 60;
     width = 80;
     y = 365;
-    showFrame = true;
+    showHitBox = true;
 
     IMAGES_WALKING = [
         'assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',

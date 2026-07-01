@@ -8,6 +8,7 @@ export class MoveableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
+    showFrame = false;
     speedY = 0;
     acceleration = 2.5;
 
@@ -28,6 +29,21 @@ export class MoveableObject {
     loadImage(path){
         this.img = new Image();
         this.img.src = path;
+    }
+
+    draw(ctx){
+    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+    drawFrame(ctx){
+
+    if (this.showFrame){
+    ctx.beginPath();
+    ctx.lineWidth = '5';
+    ctx.strokeStyle = 'blue';
+    ctx.rect(this.x, this.y, this.width, this.height);
+    ctx.stroke();
+        }
     }
 
     loadImages(arr){

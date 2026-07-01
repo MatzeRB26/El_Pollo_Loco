@@ -55,15 +55,27 @@ export class World {
 
     addToMap(mo){
     if(mo.otherDirection){
+        this.flipImage(mo);
+        }
+
+    mo.draw(this.ctx);
+    mo.drawFrame(this.ctx);
+
+    if(mo.otherDirection){
+        this.flipImageBack(mo);
+        }
+    }
+
+    flipImage(mo){
         this.ctx.save(); // context wird gespeichert mit den jeweiligen Bildern
         this.ctx.translate(mo.width, 0);
         this.ctx.scale(-1, 1);
         mo.x = mo.x * -1;
     }
-    this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
-    if(mo.otherDirection){
+
+    flipImageBack(mo){
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
-    }
+
 }

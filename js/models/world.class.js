@@ -8,7 +8,6 @@ import { ThrowableObject } from "./throwable-object.class.js";
 import { Coin } from "./coin.class.js";
 
 
-
 export class World {
     character = new Character();
     level = level1;

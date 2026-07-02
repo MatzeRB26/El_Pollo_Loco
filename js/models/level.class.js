@@ -3,12 +3,12 @@ export class Level {
     coins;
     clouds;
     backgroundObjects;
-    level_end_x = 2700;
+    level_end_x = 2200;
 
-    constructor(enemies, coins, clouds, backgroundObjects) {
+    constructor(enemies, clouds, coins, backgroundObjects) {
         this.enemies = enemies;
-        this.coins = coins;
         this.clouds = clouds;
+        this.coins = coins;
         this.backgroundObjects = backgroundObjects;
     }
 }

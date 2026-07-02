@@ -1,0 +1,89 @@
+0000000000000000000000000000000000000000 1dc889a87957c7d26820fd4df2b2530d1f49b45e MatzeRB26 <m.stojak14@gmail.com> 1782715527 +0200	commit (initial): first commit
+1dc889a87957c7d26820fd4df2b2530d1f49b45e 0000000000000000000000000000000000000000 MatzeRB26 <m.stojak14@gmail.com> 1782715537 +0200	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 1dc889a87957c7d26820fd4df2b2530d1f49b45e MatzeRB26 <m.stojak14@gmail.com> 1782715537 +0200	Branch: renamed refs/heads/master to refs/heads/main
+1dc889a87957c7d26820fd4df2b2530d1f49b45e 1a2c631a3bbdd1b9e606f4dc986d19f6fb775ef4 MatzeRB26 <m.stojak14@gmail.com> 1782715618 +0200	commit: create the game el pollo loco
+1a2c631a3bbdd1b9e606f4dc986d19f6fb775ef4 1a2c631a3bbdd1b9e606f4dc986d19f6fb775ef4 MatzeRB26 <m.stojak14@gmail.com> 1782716063 +0200	checkout: moving from main to create-the-canvas
+1a2c631a3bbdd1b9e606f4dc986d19f6fb775ef4 e64fde2058771dbf6ead5ce2887b0e9a519aa989 MatzeRB26 <m.stojak14@gmail.com> 1782718268 +0200	commit: imgs and icon copy to the folder
+e64fde2058771dbf6ead5ce2887b0e9a519aa989 1a2c631a3bbdd1b9e606f4dc986d19f6fb775ef4 MatzeRB26 <m.stojak14@gmail.com> 1782718285 +0200	checkout: moving from create-the-canvas to main
+1a2c631a3bbdd1b9e606f4dc986d19f6fb775ef4 e64fde2058771dbf6ead5ce2887b0e9a519aa989 MatzeRB26 <m.stojak14@gmail.com> 1782718291 +0200	merge create-the-canvas: Fast-forward
+e64fde2058771dbf6ead5ce2887b0e9a519aa989 e64fde2058771dbf6ead5ce2887b0e9a519aa989 MatzeRB26 <m.stojak14@gmail.com> 1782718318 +0200	checkout: moving from main to start-code-el-pollo-loco
+e64fde2058771dbf6ead5ce2887b0e9a519aa989 53d748eed996899dbaeb5cc3398464afdc6d698d MatzeRB26 <m.stojak14@gmail.com> 1782720038 +0200	commit: insert graphics
+53d748eed996899dbaeb5cc3398464afdc6d698d e64fde2058771dbf6ead5ce2887b0e9a519aa989 MatzeRB26 <m.stojak14@gmail.com> 1782720048 +0200	checkout: moving from start-code-el-pollo-loco to main
+e64fde2058771dbf6ead5ce2887b0e9a519aa989 53d748eed996899dbaeb5cc3398464afdc6d698d MatzeRB26 <m.stojak14@gmail.com> 1782720056 +0200	merge start-code-el-pollo-loco: Fast-forward
+53d748eed996899dbaeb5cc3398464afdc6d698d 53d748eed996899dbaeb5cc3398464afdc6d698d MatzeRB26 <m.stojak14@gmail.com> 1782720078 +0200	checkout: moving from main to Objektorientierung
+53d748eed996899dbaeb5cc3398464afdc6d698d f2d91030f8fc67187733adbc573107ad401ec8df MatzeRB26 <m.stojak14@gmail.com> 1782721426 +0200	commit: implement first-class support and object orientation
+f2d91030f8fc67187733adbc573107ad401ec8df 53d748eed996899dbaeb5cc3398464afdc6d698d MatzeRB26 <m.stojak14@gmail.com> 1782721435 +0200	checkout: moving from Objektorientierung to main
+53d748eed996899dbaeb5cc3398464afdc6d698d f2d91030f8fc67187733adbc573107ad401ec8df MatzeRB26 <m.stojak14@gmail.com> 1782721441 +0200	merge Objektorientierung: Fast-forward
+f2d91030f8fc67187733adbc573107ad401ec8df f2d91030f8fc67187733adbc573107ad401ec8df MatzeRB26 <m.stojak14@gmail.com> 1782721458 +0200	checkout: moving from main to Klassen
+f2d91030f8fc67187733adbc573107ad401ec8df aa65806f4b51acbfa446baccfc59f250c4b34655 MatzeRB26 <m.stojak14@gmail.com> 1782723392 +0200	commit: Create and describe classes
+aa65806f4b51acbfa446baccfc59f250c4b34655 f2d91030f8fc67187733adbc573107ad401ec8df MatzeRB26 <m.stojak14@gmail.com> 1782723403 +0200	checkout: moving from Klassen to main
+f2d91030f8fc67187733adbc573107ad401ec8df aa65806f4b51acbfa446baccfc59f250c4b34655 MatzeRB26 <m.stojak14@gmail.com> 1782723409 +0200	merge Klassen: Fast-forward
+aa65806f4b51acbfa446baccfc59f250c4b34655 aa65806f4b51acbfa446baccfc59f250c4b34655 MatzeRB26 <m.stojak14@gmail.com> 1782723426 +0200	checkout: moving from main to Bilder-einfügen
+aa65806f4b51acbfa446baccfc59f250c4b34655 9b4eb6c2c0821afecd9df67e05638ad29978fb1c MatzeRB26 <m.stojak14@gmail.com> 1782726404 +0200	commit: insert images for character and enemies
+9b4eb6c2c0821afecd9df67e05638ad29978fb1c aa65806f4b51acbfa446baccfc59f250c4b34655 MatzeRB26 <m.stojak14@gmail.com> 1782726413 +0200	checkout: moving from Bilder-einfügen to main
+aa65806f4b51acbfa446baccfc59f250c4b34655 9b4eb6c2c0821afecd9df67e05638ad29978fb1c MatzeRB26 <m.stojak14@gmail.com> 1782726417 +0200	merge Bilder-einfügen: Fast-forward
+9b4eb6c2c0821afecd9df67e05638ad29978fb1c 9b4eb6c2c0821afecd9df67e05638ad29978fb1c MatzeRB26 <m.stojak14@gmail.com> 1782726437 +0200	checkout: moving from main to character-anzeigen
+9b4eb6c2c0821afecd9df67e05638ad29978fb1c 87b2958d3524c5a0865346e3e0046ea0ba468227 MatzeRB26 <m.stojak14@gmail.com> 1782727282 +0200	commit: show character
+87b2958d3524c5a0865346e3e0046ea0ba468227 9b4eb6c2c0821afecd9df67e05638ad29978fb1c MatzeRB26 <m.stojak14@gmail.com> 1782727292 +0200	checkout: moving from character-anzeigen to main
+9b4eb6c2c0821afecd9df67e05638ad29978fb1c 87b2958d3524c5a0865346e3e0046ea0ba468227 MatzeRB26 <m.stojak14@gmail.com> 1782727298 +0200	merge character-anzeigen: Fast-forward
+87b2958d3524c5a0865346e3e0046ea0ba468227 87b2958d3524c5a0865346e3e0046ea0ba468227 MatzeRB26 <m.stojak14@gmail.com> 1782727326 +0200	checkout: moving from main to requestAnimationFrame
+87b2958d3524c5a0865346e3e0046ea0ba468227 271cd47ba212f7736f4297734c642bfe889d94cc MatzeRB26 <m.stojak14@gmail.com> 1782729510 +0200	commit: request animation for the character and chicken
+271cd47ba212f7736f4297734c642bfe889d94cc 87b2958d3524c5a0865346e3e0046ea0ba468227 MatzeRB26 <m.stojak14@gmail.com> 1782729518 +0200	checkout: moving from requestAnimationFrame to main
+87b2958d3524c5a0865346e3e0046ea0ba468227 271cd47ba212f7736f4297734c642bfe889d94cc MatzeRB26 <m.stojak14@gmail.com> 1782729523 +0200	merge requestAnimationFrame: Fast-forward
+271cd47ba212f7736f4297734c642bfe889d94cc 271cd47ba212f7736f4297734c642bfe889d94cc MatzeRB26 <m.stojak14@gmail.com> 1782729542 +0200	checkout: moving from main to Hünchen-platzieren
+271cd47ba212f7736f4297734c642bfe889d94cc e04d526bc100668cc7a888c173245b8158115d2b MatzeRB26 <m.stojak14@gmail.com> 1782731394 +0200	commit: have the chickens placed randomly.
+e04d526bc100668cc7a888c173245b8158115d2b 271cd47ba212f7736f4297734c642bfe889d94cc MatzeRB26 <m.stojak14@gmail.com> 1782731406 +0200	checkout: moving from Hünchen-platzieren to main
+271cd47ba212f7736f4297734c642bfe889d94cc e04d526bc100668cc7a888c173245b8158115d2b MatzeRB26 <m.stojak14@gmail.com> 1782731411 +0200	merge Hünchen-platzieren: Fast-forward
+e04d526bc100668cc7a888c173245b8158115d2b e04d526bc100668cc7a888c173245b8158115d2b MatzeRB26 <m.stojak14@gmail.com> 1782731424 +0200	checkout: moving from main to Wolken-einbinden
+e04d526bc100668cc7a888c173245b8158115d2b 7eda0cec2669bad08f9d35a1acde8c9fabea2b35 MatzeRB26 <m.stojak14@gmail.com> 1782732594 +0200	commit: place clouds
+7eda0cec2669bad08f9d35a1acde8c9fabea2b35 e04d526bc100668cc7a888c173245b8158115d2b MatzeRB26 <m.stojak14@gmail.com> 1782732604 +0200	checkout: moving from Wolken-einbinden to main
+e04d526bc100668cc7a888c173245b8158115d2b 7eda0cec2669bad08f9d35a1acde8c9fabea2b35 MatzeRB26 <m.stojak14@gmail.com> 1782732609 +0200	merge Wolken-einbinden: Fast-forward
+7eda0cec2669bad08f9d35a1acde8c9fabea2b35 7eda0cec2669bad08f9d35a1acde8c9fabea2b35 MatzeRB26 <m.stojak14@gmail.com> 1782732672 +0200	checkout: moving from main to hintergrundobjekte-und-architektur
+7eda0cec2669bad08f9d35a1acde8c9fabea2b35 b566f7526ed4885e6bc45ff7699b4254968dc0b7 MatzeRB26 <m.stojak14@gmail.com> 1782737764 +0200	commit: show background
+b566f7526ed4885e6bc45ff7699b4254968dc0b7 7eda0cec2669bad08f9d35a1acde8c9fabea2b35 MatzeRB26 <m.stojak14@gmail.com> 1782737774 +0200	checkout: moving from hintergrundobjekte-und-architektur to main
+7eda0cec2669bad08f9d35a1acde8c9fabea2b35 b566f7526ed4885e6bc45ff7699b4254968dc0b7 MatzeRB26 <m.stojak14@gmail.com> 1782737781 +0200	merge hintergrundobjekte-und-architektur: Fast-forward
+b566f7526ed4885e6bc45ff7699b4254968dc0b7 b566f7526ed4885e6bc45ff7699b4254968dc0b7 MatzeRB26 <m.stojak14@gmail.com> 1782737798 +0200	checkout: moving from main to mathematische-optimierung
+b566f7526ed4885e6bc45ff7699b4254968dc0b7 f2889e470c79354242d3b9181d1fe28b70660f6f MatzeRB26 <m.stojak14@gmail.com> 1782737973 +0200	commit: mathematical calculation for the background
+f2889e470c79354242d3b9181d1fe28b70660f6f b566f7526ed4885e6bc45ff7699b4254968dc0b7 MatzeRB26 <m.stojak14@gmail.com> 1782737982 +0200	checkout: moving from mathematische-optimierung to main
+b566f7526ed4885e6bc45ff7699b4254968dc0b7 f2889e470c79354242d3b9181d1fe28b70660f6f MatzeRB26 <m.stojak14@gmail.com> 1782737987 +0200	merge mathematische-optimierung: Fast-forward
+f2889e470c79354242d3b9181d1fe28b70660f6f f2889e470c79354242d3b9181d1fe28b70660f6f MatzeRB26 <m.stojak14@gmail.com> 1782738016 +0200	checkout: moving from main to Hintergrundreihenfolge
+f2889e470c79354242d3b9181d1fe28b70660f6f b7ba370a2c65637594a102910c94db9099cdf454 MatzeRB26 <m.stojak14@gmail.com> 1782739334 +0200	commit: background and characters arranged in the correct order.
+b7ba370a2c65637594a102910c94db9099cdf454 f2889e470c79354242d3b9181d1fe28b70660f6f MatzeRB26 <m.stojak14@gmail.com> 1782739360 +0200	checkout: moving from Hintergrundreihenfolge to main
+f2889e470c79354242d3b9181d1fe28b70660f6f b7ba370a2c65637594a102910c94db9099cdf454 MatzeRB26 <m.stojak14@gmail.com> 1782739366 +0200	merge Hintergrundreihenfolge: Fast-forward
+b7ba370a2c65637594a102910c94db9099cdf454 b7ba370a2c65637594a102910c94db9099cdf454 MatzeRB26 <m.stojak14@gmail.com> 1782739388 +0200	checkout: moving from main to Himmel-und-objekte-skalieren
+b7ba370a2c65637594a102910c94db9099cdf454 e162780dda963dbcc5f4a45e0bb377661d995c91 MatzeRB26 <m.stojak14@gmail.com> 1782740016 +0200	commit: Scale sky and objects
+e162780dda963dbcc5f4a45e0bb377661d995c91 b7ba370a2c65637594a102910c94db9099cdf454 MatzeRB26 <m.stojak14@gmail.com> 1782740030 +0200	checkout: moving from Himmel-und-objekte-skalieren to main
+b7ba370a2c65637594a102910c94db9099cdf454 e162780dda963dbcc5f4a45e0bb377661d995c91 MatzeRB26 <m.stojak14@gmail.com> 1782740036 +0200	merge Himmel-und-objekte-skalieren: Fast-forward
+e162780dda963dbcc5f4a45e0bb377661d995c91 e99ff08a8ba90b558566ce09b89ee3d2c0406741 MatzeRB26 <m.stojak14@gmail.com> 1782741837 +0200	commit: index html sauber gemacht
+e99ff08a8ba90b558566ce09b89ee3d2c0406741 583c3cac7c30572471d24231e8aa6e85bb23590b MatzeRB26 <m.stojak14@gmail.com> 1782746542 +0200	commit: import and export included
+583c3cac7c30572471d24231e8aa6e85bb23590b 983026da01b87adb0c33379d1eadf827a1b9a2e6 MatzeRB26 <m.stojak14@gmail.com> 1782747168 +0200	commit: favicon included
+983026da01b87adb0c33379d1eadf827a1b9a2e6 9a1d649ee4386a382bf39e89a098003bc17da839 MatzeRB26 <m.stojak14@gmail.com> 1782800807 +0200	commit: functions aufgeräumt
+9a1d649ee4386a382bf39e89a098003bc17da839 9a1d649ee4386a382bf39e89a098003bc17da839 MatzeRB26 <m.stojak14@gmail.com> 1782800838 +0200	checkout: moving from main to import-und-export-einbauen
+9a1d649ee4386a382bf39e89a098003bc17da839 2d3ce101742abf335aa9dee9428459184209ac1d MatzeRB26 <m.stojak14@gmail.com> 1782805796 +0200	commit: import and export files datein
+2d3ce101742abf335aa9dee9428459184209ac1d 9a1d649ee4386a382bf39e89a098003bc17da839 MatzeRB26 <m.stojak14@gmail.com> 1782805830 +0200	checkout: moving from import-und-export-einbauen to main
+9a1d649ee4386a382bf39e89a098003bc17da839 2d3ce101742abf335aa9dee9428459184209ac1d MatzeRB26 <m.stojak14@gmail.com> 1782805836 +0200	merge import-und-export-einbauen: Fast-forward
+2d3ce101742abf335aa9dee9428459184209ac1d 2d3ce101742abf335aa9dee9428459184209ac1d MatzeRB26 <m.stojak14@gmail.com> 1782805905 +0200	checkout: moving from main to wolken-bewegen
+2d3ce101742abf335aa9dee9428459184209ac1d 12efd0609063437f1e646433f871e2f1b0a6e0f6 MatzeRB26 <m.stojak14@gmail.com> 1782807672 +0200	commit: fluid movement of the clouds
+12efd0609063437f1e646433f871e2f1b0a6e0f6 2d3ce101742abf335aa9dee9428459184209ac1d MatzeRB26 <m.stojak14@gmail.com> 1782807685 +0200	checkout: moving from wolken-bewegen to main
+2d3ce101742abf335aa9dee9428459184209ac1d 12efd0609063437f1e646433f871e2f1b0a6e0f6 MatzeRB26 <m.stojak14@gmail.com> 1782807690 +0200	merge wolken-bewegen: Fast-forward
+12efd0609063437f1e646433f871e2f1b0a6e0f6 462f0268d88ef288821a50741baa8e6184c36af1 MatzeRB26 <m.stojak14@gmail.com> 1782810647 +0200	commit: loaded in Pepe's movement via imagecache
+462f0268d88ef288821a50741baa8e6184c36af1 4cc3195f2e8ebf62726b7b5e1f2eb447bbc5f271 MatzeRB26 <m.stojak14@gmail.com> 1782812420 +0200	commit: Character movement animated
+4cc3195f2e8ebf62726b7b5e1f2eb447bbc5f271 30366709a1880966783e2a356623776eb9a3c938 MatzeRB26 <m.stojak14@gmail.com> 1782813178 +0200	commit: Enemy chickens were animated.
+30366709a1880966783e2a356623776eb9a3c938 eca34e96e8dda94e932590bd893778820b76f730 MatzeRB26 <m.stojak14@gmail.com> 1782814365 +0200	commit: Create movement for chickens
+eca34e96e8dda94e932590bd893778820b76f730 27f3ecba8178a5c36e4fec8783c7223f8303adea MatzeRB26 <m.stojak14@gmail.com> 1782843560 +0200	commit: walk animation included
+27f3ecba8178a5c36e4fec8783c7223f8303adea fc13af4acefd6ae53b1cedb10de6d6fe9547d8f3 MatzeRB26 <m.stojak14@gmail.com> 1782844407 +0200	commit: Character moving left or right
+fc13af4acefd6ae53b1cedb10de6d6fe9547d8f3 f48a7a0fbc78b497dd4b663698e21bafef1b2eed MatzeRB26 <m.stojak14@gmail.com> 1782845548 +0200	commit: Mirror character movement to the left and right
+f48a7a0fbc78b497dd4b663698e21bafef1b2eed a7b5fd8ad50133fdd20ee7481f8ac5e9a9ff128b MatzeRB26 <m.stojak14@gmail.com> 1782846062 +0200	commit: Camera moving with the character
+a7b5fd8ad50133fdd20ee7481f8ac5e9a9ff128b 72d4dabfd1e947e343b734a9ce9b81c7cbe38c6a MatzeRB26 <m.stojak14@gmail.com> 1782846967 +0200	commit: Insert background
+72d4dabfd1e947e343b734a9ce9b81c7cbe38c6a 1b8b6a75494a5c52324cd73d4ff0586c4f90219d MatzeRB26 <m.stojak14@gmail.com> 1782849811 +0200	commit: level objekt create and level class
+1b8b6a75494a5c52324cd73d4ff0586c4f90219d 664ed1645ec9a9bdfddd8dee3f88d070112b402b MatzeRB26 <m.stojak14@gmail.com> 1782850843 +0200	commit: character optimized
+664ed1645ec9a9bdfddd8dee3f88d070112b402b 317d51c0fdf034d431536c1ad46869443814fea7 MatzeRB26 <m.stojak14@gmail.com> 1782853817 +0200	commit: Endboss Chicken implemented in the game.
+317d51c0fdf034d431536c1ad46869443814fea7 7add8c54207a7c88479eaff4e2b6ba26a6d92fba MatzeRB26 <m.stojak14@gmail.com> 1782898748 +0200	commit: Gravity is implemented for when you fall from above
+7add8c54207a7c88479eaff4e2b6ba26a6d92fba b1a7727762f8b4b2cc13f622572d04b5756da68e MatzeRB26 <m.stojak14@gmail.com> 1782899064 +0200	commit: Show jump animation
+b1a7727762f8b4b2cc13f622572d04b5756da68e be66fdea6a65ed7cefbf42854d9b21cdbd8c2af6 MatzeRB26 <m.stojak14@gmail.com> 1782902002 +0200	commit: Jump animation and optimized
+be66fdea6a65ed7cefbf42854d9b21cdbd8c2af6 331d8b8f3c195c6290b5d260018f90543336e27a MatzeRB26 <m.stojak14@gmail.com> 1782914245 +0200	commit: Refactoring and instantiation of the collision handler
+331d8b8f3c195c6290b5d260018f90543336e27a 36773ebe788dfa602c8cbac122a76fb96944dbd6 MatzeRB26 <m.stojak14@gmail.com> 1782921005 +0200	commit: Collision detection included
+36773ebe788dfa602c8cbac122a76fb96944dbd6 d6c42aafb3cdd8705547043ff1b943933b5ef187 MatzeRB26 <m.stojak14@gmail.com> 1782921900 +0200	commit: Added a death animation for when the character is injured.
+d6c42aafb3cdd8705547043ff1b943933b5ef187 421c15844b0d3db7085ed714b65d9ed665249c76 MatzeRB26 <m.stojak14@gmail.com> 1782936088 +0200	commit: StatusBar added, showing damage taken from enemies.
+421c15844b0d3db7085ed714b65d9ed665249c76 d62bffbcef0b8ef073d7c44999fc13572e47401b MatzeRB26 <m.stojak14@gmail.com> 1782940653 +0200	commit: Bottle-throwing function added
+d62bffbcef0b8ef073d7c44999fc13572e47401b eef0bb4557c036e802d3b90815b7fde7d26892d7 MatzeRB26 <m.stojak14@gmail.com> 1782995380 +0200	commit: Bottle throwing has now been added, along with some styling.

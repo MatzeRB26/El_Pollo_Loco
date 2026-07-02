@@ -21,7 +21,6 @@ function init(){
 }
 init();
 
-
 window.addEventListener("keydown", (e) => {
     if (e.code == "ArrowLeft") Keyboard.LEFT = true;
     if (e.code == "ArrowRight") Keyboard.RIGHT = true;

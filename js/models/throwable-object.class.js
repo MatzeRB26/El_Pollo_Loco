@@ -8,7 +8,7 @@ export class ThrowableObject extends MoveableObject {
         this.y = y;
         this.height = 50;
         this.width = 50;
-        this.throw();
+        this.throw(x, y);
     }
 
     throw(x, y) {
@@ -19,5 +19,9 @@ export class ThrowableObject extends MoveableObject {
 
         setInterval(() => {this.x += 10;
         }, 25);
+    }
+
+    isAboveGround() {
+        return true;
     }
 }

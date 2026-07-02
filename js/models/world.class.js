@@ -4,6 +4,7 @@ import { Cloud } from "./cloud.class.js";
 import { BackgroundObject } from "./background-object.class.js";
 import { level1 } from "../levels/level1.js";
 import { StatusBar } from "./status-bar.class.js";
+import { ThrowableObject } from "./throwable-object.class.js";
 
 
 export class World {

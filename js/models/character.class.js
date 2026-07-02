@@ -1,6 +1,6 @@
 import { MoveableObject } from "./moveable-object.class.js";
-import { ThrowableObject } from "./throwable-object.class.js";
 import { StatusBar } from "./status-bar.class.js"
+import { ThrowableObject } from "./throwable-object.class.js";
 
 export class Character extends MoveableObject {
     height = 280;
@@ -88,7 +88,4 @@ export class Character extends MoveableObject {
             }
         }, 60);
     }
-
-
-    
 }

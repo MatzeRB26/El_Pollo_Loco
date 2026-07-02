@@ -36,6 +36,7 @@ export class World {
     setInterval(() => {
         this.checkCollisions();
         this.checkCoinCollisions();
+        this.checkThrowObjects();
     }, 200);
 }
 

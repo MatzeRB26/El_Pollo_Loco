@@ -19,11 +19,7 @@ export class MoveableObject extends DrawableObject {
     }
 
     isAboveGround() {
-        // if (this instanceof ThrowableObject){
-        //     return true;
-        // } else {
         return this.y < 150;
-        // }
     }
 
     isColliding(mo) { // Character collidiert mit dem Hünchen

@@ -42,6 +42,7 @@ export class World {
         this.checkCollisions();
         this.checkCoinCollisions();
         this.checkThrowObjects();
+        this.checkBottleCollisions();
     }, 200);
 }
 
@@ -72,16 +73,29 @@ export class World {
     });
 }
 
+checkBottleCollisions() {
+this.throwableObjects.forEach((bottle) => {
+this.level.enemies.forEach((enemy) => {
+if (bottle.isColliding(enemy) && !bottle.isSplashing) {
+bottle.splash();
+enemy.hit();
+}
+});
+});
+this.throwableObjects = this.throwableObjects.filter(
+bottle => !bottle.markedForDeletion);
+}
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.clouds);
         this.ctx.translate(-this.camera_x, 0); // StatusBar geht mit zurück wenn die Camera sich bewegt
         this.addToMap(this.statusBar);
         this.addToMap(this.coinStatusBar);
         this.ctx.translate(this.camera_x, 0); // StatusBar geht mit vorwärts wenn die Camera sich bewegt
         this.addToMap(this.character);
-        this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);

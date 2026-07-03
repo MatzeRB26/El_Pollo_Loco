@@ -16,9 +16,9 @@ export class World {
     ctx;
     keyboard;
     camera_x = 0;
+    throwableObjects = [];
     statusBar = new StatusBar();
     coinStatusBar = new CoinStatusBar();
-    throwableObjects = [];
     collectedCoins = 0;
     maxCoins = 10;
 
@@ -30,7 +30,7 @@ export class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.maxCoins = this.level.coins.length;
+        this.checkCoinCollisions();
     }
 
     setWorld() {
@@ -62,15 +62,16 @@ export class World {
     }
 
     checkCoinCollisions() {
-    for (let i = this.level.coins.length - 1; i >= 0; i--) {
-        if (this.character.isColliding(this.level.coins[i])) {
-            this.level.coins.splice(i, 1);
+    this.level.coins.forEach((coin, index) => {
+        if (this.character.isColliding(coin)) {
+            this.level.coins.splice(index, 1);
             this.collectedCoins++;
-            let percentage = this.collectedCoins / this.maxCoins * 100;
+            let percentage = (this.collectedCoins / this.maxCoins) * 100;
             this.coinStatusBar.setPercentage(percentage);
         }
-    }
+    });
 }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);

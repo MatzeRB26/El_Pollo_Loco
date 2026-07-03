@@ -16,10 +16,10 @@ export class CoinStatusBar extends DrawableObject {
     constructor() {
         super();
         this.loadImages(this.COIN_IMAGES);
-        this.x = 20;
-        this.y = 40;
-        this.width = 200;
-        this.height = 60;
+        this.x = 25;
+        this.y = 85;
+        this.width = 150;
+        this.height = 50;
         this.setPercentage(0);
     }
 
@@ -30,11 +30,18 @@ export class CoinStatusBar extends DrawableObject {
     }
 
     resolveImageIndex() {
-        if (this.percentage == 100) return 5;
-        if (this.percentage >= 80) return 4;
-        if (this.percentage >= 60) return 3;
-        if (this.percentage >= 40) return 2;
-        if (this.percentage >= 20) return 1;
+    if (this.percentage >= 100) {
+        return 5;
+    } else if (this.percentage >= 80) {
+        return 4;
+    } else if (this.percentage >= 60) {
+        return 3;
+    } else if (this.percentage >= 40) {
+        return 2;
+    } else if (this.percentage > 0) {
+        return 1; 
+    } else {
         return 0;
     }
+}
 }

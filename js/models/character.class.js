@@ -4,7 +4,7 @@ import { ThrowableObject } from "./throwable-object.class.js";
 
 export class Character extends MoveableObject {
     height = 280;
-    y = 150;
+    y = 155;
     speed = 10;
     showHitBox = true;
 

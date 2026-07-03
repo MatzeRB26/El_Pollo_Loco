@@ -10,7 +10,8 @@ export class Coin extends MoveableObject {
     ];
 
     constructor(x, y) {
-        super().loadImage('assets/img/8_coin/coin_2.png');
+        super();
+        this.loadImage('assets/img/8_coin/coin_2.png');
         this.loadImages(this.COIN_IMAGES);
         this.x = x;
         this.y = y;

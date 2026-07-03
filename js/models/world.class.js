@@ -6,8 +6,8 @@ import { level1 } from "../levels/level1.js";
 import { StatusBar } from "./status-bar.class.js";
 import { ThrowableObject } from "./throwable-object.class.js";
 import { Coin } from "./coin.class.js";
-import { CoinStatusBar } from "./coin-status-bar.class.js";
-
+import { CoinStatusBar } from "./status-bar-coin.class.js";
+import { BottleStatusBar } from "./status-bar-bottle.class.js";
 
 export class World {
     character = new Character();
@@ -19,8 +19,11 @@ export class World {
     throwableObjects = [];
     statusBar = new StatusBar();
     coinStatusBar = new CoinStatusBar();
+    bottleStatusBar = new BottleStatusBar();
     collectedCoins = 0;
     maxCoins = 10;
+    collectedBottles = 0;
+    maxBottles = 10;
 
     constructor(canvas, keyboard, level) {
         this.ctx = canvas.getContext("2d");
@@ -43,15 +46,22 @@ export class World {
         this.checkCoinCollisions();
         this.checkThrowObjects();
         this.checkBottleCollisions();
+        this.checkBottlePickup();
     }, 200);
 }
 
-    checkThrowObjects(){
-        if(this.keyboard.D){
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
-            this.throwableObjects.push(bottle);
-        }
+    checkThrowObjects() {
+    if (this.keyboard.D && this.collectedBottles > 0) {
+        let bottle = new ThrowableObject(
+            this.character.x + 50,
+            this.character.y + 100
+        );
+        this.throwableObjects.push(bottle);
+        this.collectedBottles--;
+        let percentage = (this.collectedBottles / this.maxBottles) * 100;
+        this.bottleStatusBar.setPercentage(percentage);
     }
+}
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
@@ -73,17 +83,29 @@ export class World {
     });
 }
 
-checkBottleCollisions() {
-this.throwableObjects.forEach((bottle) => {
-this.level.enemies.forEach((enemy) => {
-if (bottle.isColliding(enemy) && !bottle.isSplashing) {
-bottle.splash();
-enemy.hit();
-}
-});
-});
-this.throwableObjects = this.throwableObjects.filter(
-bottle => !bottle.markedForDeletion);
+    checkBottleCollisions() {
+    this.throwableObjects.forEach((bottle) => {
+    this.level.enemies.forEach((enemy) => {
+    if (bottle.isColliding(enemy) && !bottle.isSplashing) {
+    bottle.splash();
+    enemy.hit();
+    }
+    });
+    });
+    this.throwableObjects = this.throwableObjects.filter(
+    bottle => !bottle.markedForDeletion);
+    }
+
+    checkBottlePickup() {
+    for (let i = this.level.bottles.length - 1; i >= 0; i--) {
+        let bottle = this.level.bottles[i];
+        if (this.character.isColliding(bottle)) {
+            this.level.bottles.splice(i, 1);
+            this.collectedBottles++;
+            let percent = (this.collectedBottles / this.maxBottles) * 100;
+            this.bottleStatusBar.setPercentage(percent);
+        }
+    }
 }
 
     draw() {
@@ -94,9 +116,11 @@ bottle => !bottle.markedForDeletion);
         this.ctx.translate(-this.camera_x, 0); // StatusBar geht mit zurück wenn die Camera sich bewegt
         this.addToMap(this.statusBar);
         this.addToMap(this.coinStatusBar);
+        this.addToMap(this.bottleStatusBar);
         this.ctx.translate(this.camera_x, 0); // StatusBar geht mit vorwärts wenn die Camera sich bewegt
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.bottles);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);

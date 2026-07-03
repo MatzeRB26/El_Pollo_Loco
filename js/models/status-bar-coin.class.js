@@ -16,11 +16,11 @@ export class CoinStatusBar extends DrawableObject {
     constructor() {
         super();
         this.loadImages(this.COIN_IMAGES);
+        this.setPercentage(0);
         this.x = 25;
         this.y = 85;
-        this.width = 150;
         this.height = 50;
-        this.setPercentage(0);
+        this.width = 150;
     }
 
     setPercentage(percentage) {

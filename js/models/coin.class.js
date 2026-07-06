@@ -9,6 +9,13 @@ export class Coin extends MoveableObject {
     'assets/img/8_coin/coin_2.png'
     ];
 
+    offset = {
+        top: 45,
+        bottom: 90,
+        left: 45,
+        right: 45,
+    };
+
     constructor(x, y) {
         super();
         this.loadImage('assets/img/8_coin/coin_2.png');
@@ -16,6 +23,7 @@ export class Coin extends MoveableObject {
         this.x = x;
         this.y = y;
         this.animate();
+        this.getRealFrame();
     }
 
     animate() {

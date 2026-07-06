@@ -3,8 +3,10 @@ import { StatusBar } from "./status-bar.class.js"
 import { ThrowableObject } from "./throwable-object.class.js";
 
 export class Character extends MoveableObject {
-    height = 280;
-    y = 155;
+    x = 0;
+    y = 200;
+    width = 130;
+    height = 250;
     speed = 10;
     showHitBox = true;
 
@@ -47,6 +49,13 @@ export class Character extends MoveableObject {
 
     world;
 
+    offset = {
+        top: 80,
+        bottom: 10,
+        left: 10,
+        right: 10,
+    };
+
     constructor() {
         super();
         this.loadImage("assets/img/2_character_pepe/2_walk/W-21.png");
@@ -56,6 +65,7 @@ export class Character extends MoveableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.applyGravity();
         this.animate();
+        this.getRealFrame();
     }
 
     animate() {

@@ -6,6 +6,13 @@ export class Bottle extends MoveableObject {
         'assets/img/6_salsa_bottle/2_salsa_bottle_on_ground.png'
     ];
 
+    offset = {
+        top: 15,
+        bottom: 25,
+        left: 25,
+        right: 25,
+    };
+
     constructor(x, y) {
         super().loadImage(this.IMAGES_BOTTLE_GROUND[0]);
         this.loadImages(this.IMAGES_BOTTLE_GROUND);
@@ -14,6 +21,7 @@ export class Bottle extends MoveableObject {
         this.width = 60;
         this.height = 70;
         this.animate();
+        this.getRealFrame();
     }
 
     animate() {

@@ -9,6 +9,13 @@ export class MoveableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
 
+    offset = {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+    };
+
     applyGravity() {
     this.gravityInterval = setInterval(() => {
         if (this.isAboveGround() || this.speedY > 0) {
@@ -22,11 +29,20 @@ export class MoveableObject extends DrawableObject {
         return this.y < 155;
     }
 
+    getRealFrame(){
+        this.rX = this.x + this.offset.left;
+        this.rY = this.y + this.offset.top;
+        this.rW = this.width - this.offset.left - this.offset.right;
+        this.rH = this.height - this.offset.top - this.offset.bottom;
+    }
+
     isColliding(mo) { // Character collidiert mit dem Hünchen
-    return this.x + this.width > mo.x &&
-    this.y + this.height > mo.y &&
-    this.x < mo.x + mo.width &&
-    this.y < mo.y + mo.height;
+        this.getRealFrame();
+        mo.getRealFrame();
+    return this.rX + this.rW > mo.rX &&
+    this.rY + this.rH > mo.rY &&
+    this.rX < mo.rX + mo.rW &&
+    this.rY < mo.rY + mo.rH;
 }
 
     hit() {

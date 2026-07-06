@@ -13,12 +13,20 @@ export class Chicken extends MoveableObject {
         'assets/img/3_enemies_chicken/chicken_normal/1_walk/3_w.png'
     ];
 
+    offset = {
+        top: 0,
+        bottom: 0,
+        left: 5,
+        right: 5,
+    };
+
     constructor() {
         super().loadImage('assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
-        this.x = 200 + Math.random() * 500;
-        this.speed = 0.15 + Math.random() * 0.25;
+        this.x = 400 + Math.random() * 500;
+        this.speed = 0.15 + Math.random() * 0.5;
         this.animate();
+        this.getRealFrame();
     }
 
     animate(){

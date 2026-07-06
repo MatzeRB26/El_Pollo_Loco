@@ -26,11 +26,12 @@ export class DrawableObject {
     }
 
     drawFrame(ctx){
-        if (this.showHitBox){
+        if (this.showHitBox) {
+            this.getRealFrame();
         ctx.beginPath();
         ctx.lineWidth = '5';
         ctx.strokeStyle = 'blue';
-        ctx.rect(this.x, this.y, this.width, this.height);
+        ctx.rect(this.rX, this.rY, this.rW, this.rH);
         ctx.stroke();
         }
     }

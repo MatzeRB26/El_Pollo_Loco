@@ -11,7 +11,6 @@ export class Endboss extends MoveableObject {
     alertPlayed = false;
     markedForDeletion = false;
     speed = 3;
-    state = "walking";
 
     IMAGES_WALKING = [
         "assets/img/4_enemie_boss_chicken/1_walk/G1.png",

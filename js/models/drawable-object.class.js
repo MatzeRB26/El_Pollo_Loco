@@ -29,7 +29,7 @@ export class DrawableObject {
         if (this.showHitBox) {
             this.getRealFrame();
         ctx.beginPath();
-        ctx.lineWidth = '5';
+        ctx.lineWidth = '2';
         ctx.strokeStyle = 'blue';
         ctx.rect(this.rX, this.rY, this.rW, this.rH);
         ctx.stroke();

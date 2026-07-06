@@ -10,26 +10,25 @@ import { Endboss } from "./models/endboss.class.js";
 import { level1 } from "./levels/level1.js";
 import { Coin } from "./models/coin.class.js";
 
-
 let canvas; // eine variable für das Bildformat(720x480px)
 let world;
 let keyboard = new Keyboard();
 
-function init(){
-    canvas = document.getElementById('canvas');
-    world = new World(canvas, Keyboard, level1);
+function init() {
+    canvas = document.getElementById("canvas");
+    world = new World(canvas, keyboard, level1);
 }
 init();
 
 // #region Fullscreen
-window.toggleFullscreen = function() {
-    let canvas = document.getElementById('canvas');
+window.toggleFullscreen = function () {
+    let canvas = document.getElementById("canvas");
     if (!document.fullscreenElement) {
         canvas.requestFullscreen();
     } else {
         document.exitFullscreen();
     }
-}
+};
 
 function closefullscreen() {
     if (document.exitFullscreen) {
@@ -42,20 +41,20 @@ function closefullscreen() {
 
 // #region Keyboard
 window.addEventListener("keydown", (e) => {
-    if (e.code == "ArrowLeft") Keyboard.LEFT = true;
-    if (e.code == "ArrowRight") Keyboard.RIGHT = true;
-    if (e.code == "ArrowUp") Keyboard.UP = true;
-    if (e.code == "ArrowDown") Keyboard.DOWN = true;
-    if (e.code == "Space") Keyboard.SPACE = true;
-    if (e.code == "KeyD") Keyboard.D = true;
+    if (e.code == "ArrowLeft") keyboard.LEFT = true;
+    if (e.code == "ArrowRight") keyboard.RIGHT = true;
+    if (e.code == "ArrowUp") keyboard.UP = true;
+    if (e.code == "ArrowDown") keyboard.DOWN = true;
+    if (e.code == "Space") keyboard.SPACE = true;
+    if (e.code == "KeyD") keyboard.D = true;
 });
 
 window.addEventListener("keyup", (e) => {
-    if (e.code == "ArrowLeft") Keyboard.LEFT = false;
-    if (e.code == "ArrowRight") Keyboard.RIGHT = false;
-    if (e.code == "ArrowUp") Keyboard.UP = false;
-    if (e.code == "ArrowDown") Keyboard.DOWN = false;
-    if (e.code == "Space") Keyboard.SPACE = false;
-    if (e.code == "KeyD") Keyboard.D = false;
+    if (e.code == "ArrowLeft") keyboard.LEFT = false;
+    if (e.code == "ArrowRight") keyboard.RIGHT = false;
+    if (e.code == "ArrowUp") keyboard.UP = false;
+    if (e.code == "ArrowDown") keyboard.DOWN = false;
+    if (e.code == "Space") keyboard.SPACE = false;
+    if (e.code == "KeyD") keyboard.D = false;
 });
 // #endregion

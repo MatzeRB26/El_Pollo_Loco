@@ -32,7 +32,6 @@ export class ThrowableObject extends MoveableObject {
         this.width = 50;
         this.height = 50;
         this.otherDirection = otherDirection;
-        otherDirection = false;
         this.throw();
         this.animate();
     }

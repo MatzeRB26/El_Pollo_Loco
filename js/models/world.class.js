@@ -1,5 +1,6 @@
 import { Character } from "./character.class.js";
 import { Chicken } from "./chicken.class.js";
+import { Endboss } from "./endboss.class.js";
 import { Cloud } from "./cloud.class.js";
 import { BackgroundObject } from "./background-object.class.js";
 import { level1 } from "../levels/level1.js";
@@ -17,6 +18,7 @@ export class World {
     keyboard;
     camera_x = 0;
     throwableObjects = [];
+    canThrow = true;
     statusBar = new StatusBar();
     coinStatusBar = new CoinStatusBar();
     bottleStatusBar = new BottleStatusBar();
@@ -30,10 +32,9 @@ export class World {
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.level = level;
-        this.draw();
         this.setWorld();
+        this.draw();
         this.run();
-        this.checkCoinCollisions();
     }
 
     setWorld() {
@@ -47,47 +48,70 @@ export class World {
             this.checkThrowObjects();
             this.checkBottleCollisions();
             this.checkBottlePickup();
-        }, 200);
+            this.level.enemies = this.level.enemies.filter(enemy => enemy.isDead !== true);
+        }, 1000 / 60);
     }
 
     checkThrowObjects() {
-        if (this.keyboard.D && this.collectedBottles > 0) {
-            let x = this.character.otherDirection
-                ? this.character.x - 20
-                : this.character.x + 50;
-            let bottle = new ThrowableObject(
-                x,
-                this.character.y + 100,
-                this.character.otherDirection,);
-            this.throwableObjects.push(bottle);
-            this.collectedBottles--;
-            let percentage = (this.collectedBottles / this.maxBottles) * 100;
-            this.bottleStatusBar.setPercentage(percentage);
+        if (this.keyboard.D && this.canThrow && this.collectedBottles > 0) {
+            this.throwBottle();
+            this.canThrow = false;
+            setTimeout(() => {
+                this.canThrow = true;
+            }, 300);
         }
+    }
+
+    throwBottle() {
+        let x = this.character.otherDirection
+            ? this.character.x - 20
+            : this.character.x + 50;
+        let bottle = new ThrowableObject(
+            x,
+            this.character.y + 100,
+            this.character.otherDirection,
+        );
+        this.throwableObjects.push(bottle);
+        this.collectedBottles--;
+        let p = (this.collectedBottles / this.maxBottles) * 100;
+        this.bottleStatusBar.setPercentage(p);
+    }
+
+    isJumpAttack(enemy) {
+        let feet = this.character.rY + this.character.rH;
+        return this.character.speedY < 0 && feet < enemy.rY + 20;
     }
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
-                this.character.hit();
-                this.statusBar.setPercentage(this.character.energy);
+            if (enemy.isDead) return;
+            if (!this.character.isColliding(enemy)) return;
+            if (enemy instanceof Chicken) {
+                this.handleChicken(enemy);
+            } else {
+                this.handleEndboss(enemy);
             }
         });
     }
 
-    checkCoinCollisions() {
-        this.level.coins.forEach((coin, index) => {
-            if (this.character.isColliding(coin)) {
-                this.level.coins.splice(index, 1);
-                this.collectedCoins++;
-                let percentage = (this.collectedCoins / this.maxCoins) * 100;
-                this.coinStatusBar.setPercentage(percentage);
-            }
-        });
+    handleChicken(enemy) {
+        let feet = this.character.rY + this.character.rH;
+        if (feet < enemy.rY + 35) {
+            enemy.die();
+            this.character.jump();
+            return;
+        }
+        this.character.hit();
+        this.statusBar.setPercentage(this.character.energy);
+    }
+
+    handleEndboss(enemy) {
+        this.character.hit();
+        this.statusBar.setPercentage(this.character.energy);
     }
 
     checkBottleCollisions() {
-        this.throwableObjects.forEach((bottle) => {
+        this.throwableObjects.forEach((bottle, index) => {
             this.level.enemies.forEach((enemy) => {
                 if (bottle.isColliding(enemy) && !bottle.isSplashing) {
                     bottle.splash();
@@ -98,6 +122,17 @@ export class World {
         this.throwableObjects = this.throwableObjects.filter(
             (bottle) => !bottle.markedForDeletion,
         );
+    }
+
+    checkCoinCollisions() {
+        for (let i = this.level.coins.length - 1; i >= 0; i--) {
+            if (this.character.isColliding(this.level.coins[i])) {
+                this.level.coins.splice(i, 1);
+                this.collectedCoins++;
+                let percentage = (this.collectedCoins / this.maxCoins) * 100;
+                this.coinStatusBar.setPercentage(percentage);
+            }
+        }
     }
 
     checkBottlePickup() {
@@ -128,7 +163,6 @@ export class World {
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
-
         let self = this; // diese function arbeitet erst dann wenn alles vorgezeichnet ist aus dem DrawImage(draw wird immer wieder aufgerufen)
         requestAnimationFrame(function () {
             self.draw();
@@ -145,10 +179,8 @@ export class World {
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
-
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
-
         if (mo.otherDirection) {
             this.flipImageBack(mo);
         }

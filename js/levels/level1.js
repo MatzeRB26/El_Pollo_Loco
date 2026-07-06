@@ -8,8 +8,8 @@ import { Bottle } from "../models/bottle.class.js";
 
 export const level1 = new Level( 
     [
-        new Chicken(), 
-        new Chicken(), 
+        new Chicken(),
+        new Chicken(),
         new Chicken(),
         new Endboss()
     ],
@@ -33,11 +33,11 @@ export const level1 = new Level(
     ],
     
     [
-    new Bottle(250, 350),
-    new Bottle(270, 370),
+    new Bottle(200, 350),
+    new Bottle(290, 365),
     new Bottle(590, 350),
-    new Bottle(630, 365),
-    new Bottle(710, 365),
+    new Bottle(630, 375),
+    new Bottle(710, 370),
     new Bottle(840, 360),
     new Bottle(950, 370),
     new Bottle(1100, 375),

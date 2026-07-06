@@ -11,25 +11,33 @@ export const level1 = new Level(
         new Chicken(),
         new Chicken(),
         new Chicken(),
+        new Chicken(),
+        new Chicken(),
         new Endboss()
     ],
     
     [
-        new Cloud(),
-        new Cloud()
+    new Cloud(),
+    new Cloud(),
+    new Cloud(),
+    new Cloud(),
+    new Cloud(),
+    new Cloud(),
+    new Cloud(),
+    new Cloud()
     ],
     
     [
-        new Coin(400, 280),
+        new Coin(300, 280),
         new Coin(500, 230),
-        new Coin(600, 280),
-        new Coin(900, 180),
+        new Coin(700, 280),
+        new Coin(800, 180),
         new Coin(1000, 130),
-        new Coin(1100, 180),
-        new Coin(1500, 310),
-        new Coin(1600, 260),
-        new Coin(1700, 220),
-        new Coin(1800, 180)
+        new Coin(1300, 180),
+        new Coin(1700, 310),
+        new Coin(1900, 260),
+        new Coin(2000, 220),
+        new Coin(2200, 180)
     ],
     
     [

@@ -43,12 +43,15 @@ export class World {
 
     run() {
         setInterval(() => {
+            this.activateEndboss();
             this.checkCollisions();
             this.checkCoinCollisions();
             this.checkThrowObjects();
             this.checkBottleCollisions();
             this.checkBottlePickup();
-            this.level.enemies = this.level.enemies.filter(enemy => enemy.isDead !== true);
+            this.level.enemies = this.level.enemies.filter(
+                (enemy) => !enemy.markedForDeletion,
+            );
         }, 1000 / 60);
     }
 
@@ -77,6 +80,18 @@ export class World {
         this.bottleStatusBar.setPercentage(p);
     }
 
+    activateEndboss() {
+        this.level.enemies.forEach((enemy) => {
+            if (
+                enemy instanceof Endboss &&
+                !enemy.activated &&
+                this.character.x > 1800
+            ) {
+                enemy.activate();
+            }
+        });
+    }
+
     isJumpAttack(enemy) {
         let feet = this.character.rY + this.character.rH;
         return this.character.speedY < 0 && feet < enemy.rY + 20;
@@ -84,7 +99,7 @@ export class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (enemy.isDead) return;
+            if (enemy.dead || enemy.markedForDeletion) return;
             if (!this.character.isColliding(enemy)) return;
             if (enemy instanceof Chicken) {
                 this.handleChicken(enemy);
@@ -95,8 +110,8 @@ export class World {
     }
 
     handleChicken(enemy) {
-        let feet = this.character.rY + this.character.rH;
-        if (feet < enemy.rY + 35) {
+        const feet = this.character.rY + this.character.rH;
+        if (this.character.speedY < 0 && feet < enemy.rY + 25) {
             enemy.die();
             this.character.jump();
             return;
@@ -111,11 +126,15 @@ export class World {
     }
 
     checkBottleCollisions() {
-        this.throwableObjects.forEach((bottle, index) => {
+        this.throwableObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
                 if (bottle.isColliding(enemy) && !bottle.isSplashing) {
                     bottle.splash();
-                    enemy.hit();
+                    if (enemy instanceof Endboss) {
+                        enemy.hit();
+                    } else {
+                        enemy.die();
+                    }
                 }
             });
         });

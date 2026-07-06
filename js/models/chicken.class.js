@@ -3,8 +3,9 @@ import { MoveableObject } from "./moveable-object.class.js";
 export class Chicken extends MoveableObject {
     height = 60;
     width = 80;
-    y = 365;
+    y = 360;
     showHitBox = true;
+    markedForDeletion = false;
 
     IMAGES_WALKING = [
         "assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
@@ -12,7 +13,9 @@ export class Chicken extends MoveableObject {
         "assets/img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
     ];
 
-    IMAGE_DEAD = "assets/img/3_enemies_chicken/chicken_normal/2_dead/dead.png";
+    IMAGE_DEAD = [
+        "assets/img/3_enemies_chicken/chicken_normal/2_dead/dead.png",
+    ];
 
     offset = {
         top: 0,
@@ -30,23 +33,26 @@ export class Chicken extends MoveableObject {
         this.speed = 0.15 + Math.random() * 0.5;
         this.animate();
         this.getRealFrame();
-        this.isDead = false;
+        this.dead = false;
     }
 
     animate() {
-        setInterval(() => {
+        this.moveInterval = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
-
-        setInterval(() => {
+        this.animationInterval = setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
         }, 200);
     }
 
     die() {
-        this.loadImage(this.IMAGE_DEAD);
+        if (this.dead) return;
+        this.dead = true;
+        clearInterval(this.moveInterval);
+        clearInterval(this.animationInterval);
+        this.loadImage(this.IMAGE_DEAD[0]);
         setTimeout(() => {
-            this.isDead = true;
-        }, 300);
+            this.markedForDeletion = true;
+        }, 1000);
     }
 }

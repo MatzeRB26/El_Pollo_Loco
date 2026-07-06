@@ -27,6 +27,6 @@ export class Bottle extends MoveableObject {
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES_BOTTLE_GROUND);
-        }, 300);
+        }, 500);
     }
 }

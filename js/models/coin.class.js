@@ -21,7 +21,7 @@ export class Coin extends MoveableObject {
         this.loadImage('assets/img/8_coin/coin_2.png');
         this.loadImages(this.COIN_IMAGES);
         this.x = x;
-        this.y = y;
+        this.y = 30 + Math.random() * 200;
         this.animate();
         this.getRealFrame();
     }

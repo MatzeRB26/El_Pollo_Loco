@@ -41,72 +41,76 @@ export class World {
     }
 
     run() {
-    setInterval(() => {
-        this.checkCollisions();
-        this.checkCoinCollisions();
-        this.checkThrowObjects();
-        this.checkBottleCollisions();
-        this.checkBottlePickup();
-    }, 200);
-}
+        setInterval(() => {
+            this.checkCollisions();
+            this.checkCoinCollisions();
+            this.checkThrowObjects();
+            this.checkBottleCollisions();
+            this.checkBottlePickup();
+        }, 200);
+    }
 
     checkThrowObjects() {
-    if (this.keyboard.D && this.collectedBottles > 0) {
-        let bottle = new ThrowableObject(
-            this.character.x + 50,
-            this.character.y + 100
-        );
-        this.throwableObjects.push(bottle);
-        this.collectedBottles--;
-        let percentage = (this.collectedBottles / this.maxBottles) * 100;
-        this.bottleStatusBar.setPercentage(percentage);
+        if (this.keyboard.D && this.collectedBottles > 0) {
+            let x = this.character.otherDirection
+                ? this.character.x - 20
+                : this.character.x + 50;
+            let bottle = new ThrowableObject(
+                x,
+                this.character.y + 100,
+                this.character.otherDirection,);
+            this.throwableObjects.push(bottle);
+            this.collectedBottles--;
+            let percentage = (this.collectedBottles / this.maxBottles) * 100;
+            this.bottleStatusBar.setPercentage(percentage);
+        }
     }
-}
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusBar.setPercentage(this.character.energy);
-                }
-            });
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBar.setPercentage(this.character.energy);
+            }
+        });
     }
 
     checkCoinCollisions() {
-    this.level.coins.forEach((coin, index) => {
-        if (this.character.isColliding(coin)) {
-            this.level.coins.splice(index, 1);
-            this.collectedCoins++;
-            let percentage = (this.collectedCoins / this.maxCoins) * 100;
-            this.coinStatusBar.setPercentage(percentage);
-        }
-    });
-}
+        this.level.coins.forEach((coin, index) => {
+            if (this.character.isColliding(coin)) {
+                this.level.coins.splice(index, 1);
+                this.collectedCoins++;
+                let percentage = (this.collectedCoins / this.maxCoins) * 100;
+                this.coinStatusBar.setPercentage(percentage);
+            }
+        });
+    }
 
     checkBottleCollisions() {
-    this.throwableObjects.forEach((bottle) => {
-    this.level.enemies.forEach((enemy) => {
-    if (bottle.isColliding(enemy) && !bottle.isSplashing) {
-    bottle.splash();
-    enemy.hit();
-    }
-    });
-    });
-    this.throwableObjects = this.throwableObjects.filter(
-    bottle => !bottle.markedForDeletion);
+        this.throwableObjects.forEach((bottle) => {
+            this.level.enemies.forEach((enemy) => {
+                if (bottle.isColliding(enemy) && !bottle.isSplashing) {
+                    bottle.splash();
+                    enemy.hit();
+                }
+            });
+        });
+        this.throwableObjects = this.throwableObjects.filter(
+            (bottle) => !bottle.markedForDeletion,
+        );
     }
 
     checkBottlePickup() {
-    for (let i = this.level.bottles.length - 1; i >= 0; i--) {
-        let bottle = this.level.bottles[i];
-        if (this.character.isColliding(bottle)) {
-            this.level.bottles.splice(i, 1);
-            this.collectedBottles++;
-            let percent = (this.collectedBottles / this.maxBottles) * 100;
-            this.bottleStatusBar.setPercentage(percent);
+        for (let i = this.level.bottles.length - 1; i >= 0; i--) {
+            let bottle = this.level.bottles[i];
+            if (this.character.isColliding(bottle)) {
+                this.level.bottles.splice(i, 1);
+                this.collectedBottles++;
+                let percent = (this.collectedBottles / this.maxBottles) * 100;
+                this.bottleStatusBar.setPercentage(percent);
+            }
         }
     }
-}
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

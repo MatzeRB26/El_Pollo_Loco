@@ -51,18 +51,18 @@ export class MoveableObject extends DrawableObject {
     }
 
     hit() {
-        this.energy -= 2;
+        if (this.isDead()) return;
+        this.energy -= 5;
+        this.lastHit = new Date().getTime();
         if (this.energy < 0) {
             this.energy = 0;
-        } else {
-            this.lastHit = new Date().getTime();
         }
     }
 
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit;
         timepassed = timepassed / 1000;
-        return timepassed < 1;
+        return timepassed < 0.5;
     }
 
     isDead() {

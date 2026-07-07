@@ -19,7 +19,7 @@ export const level1 = new Level(
         new SmallChicken(),
         new SmallChicken(),
         new SmallChicken(),
-        new Endboss(),
+        new Endboss()
     ],
 
     [
@@ -30,7 +30,7 @@ export const level1 = new Level(
         new Cloud(),
         new Cloud(),
         new Cloud(),
-        new Cloud(),
+        new Cloud()
     ],
 
     [
@@ -43,7 +43,7 @@ export const level1 = new Level(
         new Coin(1700, 310),
         new Coin(1900, 260),
         new Coin(2000, 220),
-        new Coin(2200, 180),
+        new Coin(2200, 180)
     ],
 
     [
@@ -57,6 +57,9 @@ export const level1 = new Level(
         new Bottle(1100, 375),
         new Bottle(1300, 380),
         new Bottle(1500, 385),
+        new Bottle(1600, 375),
+        new Bottle(1800, 380),
+        new Bottle(2000, 385)
     ],
 
     [

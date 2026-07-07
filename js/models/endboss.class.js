@@ -6,11 +6,12 @@ export class Endboss extends MoveableObject {
     y = 60;
     x = 2450;
     speed = 2;
+    energy = 100;
     showHitBox = true;
     activated = false;
     alertPlayed = false;
     markedForDeletion = false;
-    speed = 3;
+    deadAnimationFinished = false;
 
     IMAGES_WALKING = [
         "assets/img/4_enemie_boss_chicken/1_walk/G1.png",
@@ -61,7 +62,8 @@ export class Endboss extends MoveableObject {
     };
 
     constructor() {
-        super().loadImage(this.IMAGES_WALKING[0]);
+        super();
+        this.loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_ALERT);
         this.loadImages(this.IMAGES_ATTACK);
@@ -71,16 +73,23 @@ export class Endboss extends MoveableObject {
     }
 
     animate() {
-    setInterval(() => {
-        if (this.activated && !this.isDead()) this.moveLeft();
+        setInterval(() => {
+            if (this.activated && !this.isDead()) this.moveLeft();
         }, 1000 / 60);
         setInterval(() => {
-        if (this.isDead()) return this.playAnimation(this.IMAGES_DEAD);
-        if (this.isHurt()) return this.playAnimation(this.IMAGES_HURT);
-        if (!this.activated) return this.playAnimation(this.IMAGES_WALKING);
-        if (!this.alertPlayed && (this.alertPlayed = this.currentImage >= this.IMAGES_ALERT.length))
-            this.currentImage = 0;
-        this.playAnimation(this.alertPlayed ? this.IMAGES_WALKING : this.IMAGES_ALERT);
+            if (this.isDead()) return this.playDeadAnimation();
+            if (this.isHurt()) return this.playAnimation(this.IMAGES_HURT);
+            if (!this.activated) return this.playAnimation(this.IMAGES_WALKING);
+            if (
+                !this.alertPlayed &&
+                this.currentImage >= this.IMAGES_ALERT.length
+            ) {
+                this.alertPlayed = true;
+                this.currentImage = 0;
+            }
+            this.playAnimation(
+                this.alertPlayed ? this.IMAGES_WALKING : this.IMAGES_ALERT,
+            );
         }, 120);
     }
 
@@ -96,17 +105,31 @@ export class Endboss extends MoveableObject {
         if (this.energy < 0) {
             this.energy = 0;
         }
-        if (this.isDead()) {
-            setTimeout(() => {
-                this.markedForDeletion = true;
-            }, 900);
-        }
     }
 
     die() {
-        this.isDead = true;
+        this.dead = true;
         setTimeout(() => {
             this.markedForDeletion = true;
         }, 1000);
+    }
+
+    playDeadAnimation() {
+        if (this.deadAnimationFinished) return;
+        if (this.currentAnimation !== this.IMAGES_DEAD) {
+            this.currentAnimation = this.IMAGES_DEAD;
+            this.currentImage = 0;
+        }
+        if (this.currentImage < this.IMAGES_DEAD.length) {
+            this.img = this.imageCache[this.IMAGES_DEAD[this.currentImage]];
+            this.currentImage++;
+        } else {
+            this.deadAnimationFinished = true;
+            this.img =
+                this.imageCache[this.IMAGES_DEAD[this.IMAGES_DEAD.length - 1]];
+            setTimeout(() => {
+                this.markedForDeletion = true;
+            }, 600);
+        }
     }
 }

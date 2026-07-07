@@ -5,11 +5,12 @@ import { Endboss } from "./endboss.class.js";
 import { Cloud } from "./cloud.class.js";
 import { BackgroundObject } from "./background-object.class.js";
 import { level1 } from "../levels/level1.js";
-import { StatusBar } from "./status-bar.class.js";
+import { StatusBar } from "./statusbar.class.js";
 import { ThrowableObject } from "./throwable-object.class.js";
 import { Coin } from "./coin.class.js";
-import { CoinStatusBar } from "./status-bar-coin.class.js";
-import { BottleStatusBar } from "./status-bar-bottle.class.js";
+import { CoinStatusBar } from "./statusbar-coin.class.js";
+import { BottleStatusBar } from "./statusbar-bottle.class.js";
+import { EndbossStatusBar } from "./statusbar-endboss.class.js";
 
 export class World {
     character = new Character();
@@ -23,6 +24,7 @@ export class World {
     statusBar = new StatusBar();
     coinStatusBar = new CoinStatusBar();
     bottleStatusBar = new BottleStatusBar();
+    endbossStatusBar = new EndbossStatusBar();
     collectedCoins = 0;
     maxCoins = 10;
     collectedBottles = 0;
@@ -87,7 +89,7 @@ export class World {
             if (
                 enemy instanceof Endboss &&
                 !enemy.activated &&
-                this.character.x > 1800
+                this.character.x > 2200
             ) {
                 enemy.activate();
             }
@@ -119,8 +121,10 @@ export class World {
             this.character.jump();
             return;
         }
-        this.character.hit();
-        this.statusBar.setPercentage(this.character.energy);
+        if (!this.character.isHurt()) {
+            this.character.hit();
+            this.statusBar.setPercentage(this.character.energy);
+        }
     }
 
     handleEndboss(enemy) {
@@ -135,6 +139,7 @@ export class World {
                     bottle.splash();
                     if (enemy instanceof Endboss) {
                         enemy.hit();
+                        this.endbossStatusBar.setPercentage(enemy.energy);
                     } else {
                         enemy.die();
                     }
@@ -178,6 +183,7 @@ export class World {
         this.addToMap(this.statusBar);
         this.addToMap(this.coinStatusBar);
         this.addToMap(this.bottleStatusBar);
+        this.addToMap(this.endbossStatusBar);
         this.ctx.translate(this.camera_x, 0); // StatusBar geht mit vorwärts wenn die Camera sich bewegt
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.coins);

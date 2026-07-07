@@ -105,9 +105,7 @@ export class Character extends MoveableObject {
 
     moveCharacter() {
         if (this.world.gameOver) return;
-        if (
-            this.world.keyboard.RIGHT &&
-            this.x < this.world.level.level_end_x
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x
         ) {
             this.moveRight();
             this.otherDirection = false;
@@ -147,7 +145,7 @@ export class Character extends MoveableObject {
         this.lastAction = Date.now();
     }
     isSleeping() {
-        return Date.now() - this.lastAction >= 5000;
+        return Date.now() - this.lastAction >= 10000;
     }
 
     handleDeath() {

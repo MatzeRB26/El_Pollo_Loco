@@ -38,8 +38,7 @@ export class MoveableObject extends DrawableObject {
         this.rH = this.height - this.offset.top - this.offset.bottom;
     }
 
-    isColliding(mo) {
-        // Character collidiert mit dem Hünchen
+    isColliding(mo) {// Character collidiert mit dem Hünchen
         this.getRealFrame();
         mo.getRealFrame();
         return (
@@ -51,18 +50,17 @@ export class MoveableObject extends DrawableObject {
     }
 
     hit() {
-        if (this.isDead()) return;
-        this.energy -= 5;
-        this.lastHit = new Date().getTime();
+        if (this.isHurt() || this.isDead()) return;
+        this.energy -= 20;
         if (this.energy < 0) {
             this.energy = 0;
         }
+        this.lastHit = Date.now();
     }
 
     isHurt() {
-        let timepassed = new Date().getTime() - this.lastHit;
-        timepassed = timepassed / 1000;
-        return timepassed < 0.5;
+        let timepassed = (Date.now() - this.lastHit) / 1000;
+        return timepassed < 1;
     }
 
     isDead() {

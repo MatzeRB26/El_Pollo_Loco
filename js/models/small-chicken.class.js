@@ -28,8 +28,8 @@ export class SmallChicken extends MoveableObject {
         super();
         this.loadImage('assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
-        this.x = 800 + Math.random() * 800;
-        this.y = 400 + Math.random() * 15;
+        this.x = 1200 + Math.random() * 500;
+        this.y = 400 + Math.random() * 20;
         this.speed = 0.15 + Math.random() * 0.5;
         this.animate();
         this.getRealFrame();

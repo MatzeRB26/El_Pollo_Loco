@@ -98,7 +98,6 @@ export class World {
     }
 
     isJumpAttack(enemy) {
-        // sprungattacke auf die Gegner
         let feet = this.character.rY + this.character.rH;
         return this.character.speedY < 0 && feet < enemy.rY + 20;
     }
@@ -116,16 +115,15 @@ export class World {
     }
 
     handleChicken(enemy) {
+        if (this.character.isHurt()) return;
         const feet = this.character.rY + this.character.rH;
         if (this.character.speedY < 0 && feet < enemy.rY + 25) {
             enemy.die();
             this.character.jump();
             return;
         }
-        if (!this.character.isHurt()) {
-            this.character.hit();
-            this.statusBar.setPercentage(this.character.energy);
-        }
+        this.character.hit();
+        this.statusBar.setPercentage(this.character.energy);
     }
 
     handleEndboss(enemy) {

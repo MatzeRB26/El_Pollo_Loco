@@ -24,7 +24,8 @@ export class ThrowableObject extends MoveableObject {
     ];
 
     constructor(x, y, otherDirection) {
-        super().loadImage(this.IMAGES_BOTTLE_ROTATION[0]);
+        super();
+        this.loadImage(this.IMAGES_BOTTLE_ROTATION[0]);
         this.loadImages(this.IMAGES_BOTTLE_ROTATION);
         this.loadImages(this.IMAGES_BOTTLE_SPLASH);
         this.x = x;

@@ -13,8 +13,9 @@ export class Bottle extends MoveableObject {
         right: 25,
     };
 
-    constructor(x, y) {
-        super().loadImage(this.IMAGES_BOTTLE_GROUND[0]);
+    constructor(x, y) { // Bottles erscheinen auf dem Boden und man kann diese einsammeln
+        super();
+        this.loadImage(this.IMAGES_BOTTLE_GROUND[0]);
         this.loadImages(this.IMAGES_BOTTLE_GROUND);
         this.x = x;
         this.y = y;

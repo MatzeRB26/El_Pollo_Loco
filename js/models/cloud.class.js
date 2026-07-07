@@ -6,7 +6,8 @@ export class Cloud extends MoveableObject {
     height = 250;
 
     constructor() {
-        super().loadImage("assets/img/5_background/layers/4_clouds/1.png");
+        super();
+        this.loadImage('assets/img/5_background/layers/4_clouds/1.png');
         this.x = Math.random() * 3000;
         this.y = 20 + Math.random() * 120;
         this.width = 500;
@@ -15,7 +16,7 @@ export class Cloud extends MoveableObject {
         this.animate();
     }
 
-    animate() {
+    animate() { // Wolken bewegen sich im Spiel nach links
         this.moveLeft();
     }
 

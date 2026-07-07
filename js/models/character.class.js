@@ -56,7 +56,7 @@ export class Character extends MoveableObject {
         right: 10,
     };
 
-    constructor() {
+    constructor() { // Pepes animation sollen angezeigt werden
         super();
         this.loadImage("assets/img/2_character_pepe/2_walk/W-21.png");
         this.loadImages(this.IMAGES_WALKING);

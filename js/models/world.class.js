@@ -1,5 +1,6 @@
 import { Character } from "./character.class.js";
 import { Chicken } from "./chicken.class.js";
+import { SmallChicken } from "./small-chicken.class.js";
 import { Endboss } from "./endboss.class.js";
 import { Cloud } from "./cloud.class.js";
 import { BackgroundObject } from "./background-object.class.js";
@@ -81,6 +82,7 @@ export class World {
     }
 
     activateEndboss() {
+        // Endboss aktivieren sobald man im näher kommt
         this.level.enemies.forEach((enemy) => {
             if (
                 enemy instanceof Endboss &&
@@ -93,6 +95,7 @@ export class World {
     }
 
     isJumpAttack(enemy) {
+        // sprungattacke auf die Gegner
         let feet = this.character.rY + this.character.rH;
         return this.character.speedY < 0 && feet < enemy.rY + 20;
     }
@@ -101,7 +104,7 @@ export class World {
         this.level.enemies.forEach((enemy) => {
             if (enemy.dead || enemy.markedForDeletion) return;
             if (!this.character.isColliding(enemy)) return;
-            if (enemy instanceof Chicken) {
+            if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
                 this.handleChicken(enemy);
             } else {
                 this.handleEndboss(enemy);

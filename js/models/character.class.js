@@ -147,7 +147,7 @@ export class Character extends MoveableObject {
         this.lastAction = Date.now();
     }
     isSleeping() {
-        return Date.now() - this.lastAction >= 9000;
+        return Date.now() - this.lastAction >= 5000;
     }
 
     handleDeath() {
@@ -155,7 +155,8 @@ export class Character extends MoveableObject {
         if (this.dead) return;
         this.dead = true;
         setTimeout(() => {
+            document.getElementById("game-over").classList.remove("hidden");
             this.world.gameOver = true;
-        }, 2000);
+        }, 1000);
     }
 }

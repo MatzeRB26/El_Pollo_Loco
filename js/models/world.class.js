@@ -29,6 +29,7 @@ export class World {
     maxCoins = 10;
     collectedBottles = 0;
     maxBottles = 10;
+    gameOver = false;
 
     constructor(canvas, keyboard, level) {
         this.ctx = canvas.getContext("2d");
@@ -38,6 +39,7 @@ export class World {
         this.setWorld();
         this.draw();
         this.run();
+        
     }
 
     setWorld() {
@@ -52,9 +54,7 @@ export class World {
             this.checkThrowObjects();
             this.checkBottleCollisions();
             this.checkBottlePickup();
-            this.level.enemies = this.level.enemies.filter(
-                (enemy) => !enemy.markedForDeletion,
-            );
+            this.level.enemies = this.level.enemies.filter((enemy) => !enemy.markedForDeletion,);
         }, 1000 / 60);
     }
 
@@ -146,9 +146,7 @@ export class World {
                 }
             });
         });
-        this.throwableObjects = this.throwableObjects.filter(
-            (bottle) => !bottle.markedForDeletion,
-        );
+        this.throwableObjects = this.throwableObjects.filter((bottle) => !bottle.markedForDeletion,);
     }
 
     checkCoinCollisions() {
@@ -191,6 +189,9 @@ export class World {
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
+        if (this.gameOver) {this.ctx.fillStyle = "black"; this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.drawImage(this.gameOverImage,0,0,this.canvas.width,this.canvas.height);
+        }
         let self = this; // diese function arbeitet erst dann wenn alles vorgezeichnet ist aus dem DrawImage(draw wird immer wieder aufgerufen)
         requestAnimationFrame(function () {
             self.draw();

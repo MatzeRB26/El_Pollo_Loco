@@ -77,7 +77,7 @@ export class Endboss extends MoveableObject {
             if (this.activated && !this.isDead()) this.moveLeft();
         }, 1000 / 60);
         setInterval(() => {
-            if (this.isDead()) return this.playDeadAnimation();
+            if (this.isDead()) return this.playAnimation(this.IMAGES_DEAD, false);
             if (this.isHurt()) return this.playAnimation(this.IMAGES_HURT);
             if (!this.activated) return this.playAnimation(this.IMAGES_WALKING);
             if (

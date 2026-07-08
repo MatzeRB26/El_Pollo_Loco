@@ -73,11 +73,7 @@ export class World {
         let x = this.character.otherDirection
             ? this.character.x - 20
             : this.character.x + 50;
-        let bottle = new ThrowableObject(
-            x,
-            this.character.y + 100,
-            this.character.otherDirection,
-        );
+        let bottle = new ThrowableObject(x, this.character.y + 100, this.character.otherDirection,);
         this.throwableObjects.push(bottle);
         this.collectedBottles--;
         let p = (this.collectedBottles / this.maxBottles) * 100;
@@ -86,11 +82,7 @@ export class World {
 
     activateEndboss() {
         this.level.enemies.forEach((enemy) => {
-            if (
-                enemy instanceof Endboss &&
-                !enemy.activated &&
-                this.character.x > 2200
-            ) {
+            if (enemy instanceof Endboss && !enemy.activated && this.character.x > 2200) {
                 enemy.activate();
             }
         });
@@ -145,8 +137,7 @@ export class World {
             });
         });
         this.throwableObjects = this.throwableObjects.filter(
-            (bottle) => !bottle.markedForDeletion,
-        );
+            (bottle) => !bottle.markedForDeletion,);
     }
 
     checkCoinCollisions() {

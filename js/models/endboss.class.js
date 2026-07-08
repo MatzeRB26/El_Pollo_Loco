@@ -80,11 +80,7 @@ export class Endboss extends MoveableObject {
             if (this.isDead()) return this.playAnimation(this.IMAGES_DEAD, false);
             if (this.isHurt()) return this.playAnimation(this.IMAGES_HURT);
             if (!this.activated) return this.playAnimation(this.IMAGES_WALKING);
-            if (
-                !this.alertPlayed &&
-                this.currentImage >= this.IMAGES_ALERT.length
-            ) {
-                this.alertPlayed = true;
+            if (!this.alertPlayed && this.currentImage >= this.IMAGES_ALERT.length) {this.alertPlayed = true;
                 this.currentImage = 0;
             }
             this.playAnimation(
@@ -99,11 +95,12 @@ export class Endboss extends MoveableObject {
     }
 
     hit() {
-        if (this.isDead()) return;
-        this.energy -= 20;
-        this.lastHit = new Date().getTime();
-        if (this.energy < 0) {
-            this.energy = 0;
+    if (this.isDead()) return;
+    this.energy -= 20;
+    this.lastHit = Date.now();
+    if (this.energy <= 0) {
+        this.energy = 0;
+        this.die();
         }
     }
 

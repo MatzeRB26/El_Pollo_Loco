@@ -18,8 +18,8 @@ export class SmallChicken extends MoveableObject {
     ];
 
     offset = {
-        top: 0,
-        bottom: 0,
+        top: 5,
+        bottom: 5,
         left: 5,
         right: 5,
     };
@@ -28,8 +28,8 @@ export class SmallChicken extends MoveableObject {
         super();
         this.loadImage('assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
-        this.x = 1200 + Math.random() * 500;
-        this.y = 400 + Math.random() * 20;
+        this.x = 1500 + Math.random() * 800;
+        this.y = 400
         this.speed = 0.15 + Math.random() * 0.5;
         this.animate();
         this.getRealFrame();

@@ -24,7 +24,7 @@ function startGame() {
     document.getElementById("startScreen").style.display = "none";
     document.getElementById("canvas").style.display = "block";
     const canvas = document.getElementById("canvas");
-    world = new World(canvas, keyboard, level1);
+    world = new World(canvas, keyboard);
 }
 window.startGame = startGame;
 

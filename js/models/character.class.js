@@ -13,10 +13,10 @@ export class Character extends MoveableObject {
     lastAction = Date.now();
 
     offset = {
-        top: 80,
-        bottom: 10,
-        left: 10,
-        right: 10,
+        top: 70,
+        bottom: 20,
+        left: 20,
+        right: 20,
     };
 
     IMAGES_WALKING = [
@@ -90,6 +90,8 @@ export class Character extends MoveableObject {
         this.applyGravity();
         this.animate();
         this.getRealFrame();
+        this.collectedBottles = 0;
+        this.collectedCoins = 0;
     }
 
     animate() {

@@ -27,7 +27,6 @@ export class World {
     endbossStatusBar = new EndbossStatusBar();
     collectedCoins = 0;
     maxCoins = 10;
-    collectedBottles = 0;
     maxBottles = 10;
     gameOver = false;
 
@@ -60,23 +59,23 @@ export class World {
     }
 
     checkThrowObjects() {
-        if (this.keyboard.D && this.canThrow && this.collectedBottles > 0) {
-            this.throwBottle();
-            this.canThrow = false;
-            setTimeout(() => {
-                this.canThrow = true;
-            }, 300);
+    if (this.keyboard.D && this.canThrow && this.character.collectedBottles > 0) {
+    this.throwBottle();
+    this.canThrow = false;
+        setTimeout(() => {
+        this.canThrow = true;
+        }, 300);
         }
     }
 
     throwBottle() {
-        let x = this.character.otherDirection
-            ? this.character.x - 20
-            : this.character.x + 50;
-        let bottle = new ThrowableObject(x, this.character.y + 100, this.character.otherDirection,);
+    let x = this.character.otherDirection
+        ? this.character.x - 20
+        : this.character.x + 50;
+        let bottle = new ThrowableObject(x, this.character.y + 100,this.character.otherDirection);
         this.throwableObjects.push(bottle);
-        this.collectedBottles--;
-        let p = (this.collectedBottles / this.maxBottles) * 100;
+        this.character.collectedBottles--;
+        let p = (this.character.collectedBottles / this.maxBottles) * 100;
         this.bottleStatusBar.setPercentage(p);
     }
 
@@ -152,14 +151,16 @@ export class World {
     }
 
     checkBottlePickup() {
-        for (let i = this.level.bottles.length - 1; i >= 0; i--) {
-            let bottle = this.level.bottles[i];
-            if (this.character.isColliding(bottle)) {
-                this.level.bottles.splice(i, 1);
-                this.collectedBottles++;
-                let percent = (this.collectedBottles / this.maxBottles) * 100;
-                this.bottleStatusBar.setPercentage(percent);
-            }
+    for (let i = this.level.bottles.length - 1; i >= 0; i--) {
+        let bottle = this.level.bottles[i];
+        if (this.character.isColliding(bottle)) {
+            this.level.bottles.splice(i, 1);
+            this.character.collectedBottles++;
+            let p = (this.character.collectedBottles / this.maxBottles) * 100;
+            this.bottleStatusBar.setPercentage(p);
+            console.log(this.character.collectedBottles);
+            console.log((this.character.collectedBottles / this.maxBottles) * 100);
+        }
         }
     }
 

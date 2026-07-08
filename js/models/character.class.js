@@ -85,14 +85,8 @@ export class Character extends MoveableObject {
     constructor() {
         super();
         this.loadImage(this.IMAGES_WALKING[0]);
-        [
-            this.IMAGES_WALKING,
-            this.IMAGES_JUMPING,
-            this.IMAGES_HURT,
-            this.IMAGES_DEAD,
-            this.IMAGES_IDLE,
-            this.IMAGES_SLEEP,
-        ].forEach((images) => this.loadImages(images));
+        [this.IMAGES_WALKING, this.IMAGES_JUMPING, this.IMAGES_HURT, this.IMAGES_DEAD, this.IMAGES_IDLE, this.IMAGES_SLEEP,]
+        .forEach((images) => this.loadImages(images));
         this.applyGravity();
         this.animate();
         this.getRealFrame();
@@ -100,12 +94,14 @@ export class Character extends MoveableObject {
 
     animate() {
         setInterval(() => this.moveCharacter(), 1000 / 60);
-        setInterval(() => this.playCharacterAnimation(), 150);
+        setInterval(() => this.playCharacterAnimation(), 100);
     }
 
     moveCharacter() {
         if (this.world.gameOver) return;
-        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x
+        if (
+            this.world.keyboard.RIGHT &&
+            this.x < this.world.level.level_end_x
         ) {
             this.moveRight();
             this.otherDirection = false;

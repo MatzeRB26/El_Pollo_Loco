@@ -17,14 +17,18 @@
 
         <div class="game-container">
             <canvas id="canvas" width="720" height="480"></canvas>
-
+            <div id="startScreen" class="overlay">
+                <img src="./assets/img/9_intro_outro_screens/start/startscreen_2.png" alt="Startscreen" />
+                <button onclick="startGame()">Start Game</button>
+            </div>
+            
             <div id="game-over" class="game-over hidden">
                 <img src="assets/img/9_intro_outro_screens/game_over/oh no you lost!.png" alt="Game Over"/>
             </div>
         </div>
 
         <footer>
-            <img onclick="toggleFullscreen()" id="open-fullscreen" src="./assets/icons/fullscreen.png" class="fullscreen hover"/>
+            <img onclick="toggleFullscreen()" id="open-fullscreen" src="./assets/icons/fullscreen.png"class="fullscreen hover"/>
         </footer>
     </body>
 </html>

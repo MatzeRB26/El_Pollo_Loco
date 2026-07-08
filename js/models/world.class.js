@@ -85,7 +85,6 @@ export class World {
     }
 
     activateEndboss() {
-        // Endboss aktivieren sobald man im näher kommt
         this.level.enemies.forEach((enemy) => {
             if (
                 enemy instanceof Endboss &&

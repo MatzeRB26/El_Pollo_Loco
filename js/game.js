@@ -20,6 +20,12 @@ function init() {
 }
 init();
 
+function startGame() {
+    document.getElementById("startScreen").style.display = "none";
+    world = new World(canvas, keyboard, level1);
+}
+window.startGame = startGame;
+
 // #region Fullscreen
 window.toggleFullscreen = function () {
     let canvas = document.getElementById("canvas");

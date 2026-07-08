@@ -38,6 +38,7 @@ export class Chicken extends MoveableObject {
 
     animate() {
         this.moveInterval = setInterval(() => {
+            if (this.isGameStopped()) return;
             this.moveLeft();
         }, 1000 / 60);
         this.animationInterval = setInterval(() => {
@@ -51,8 +52,7 @@ export class Chicken extends MoveableObject {
         clearInterval(this.moveInterval);
         clearInterval(this.animationInterval);
         this.loadImage(this.IMAGE_DEAD[0]);
-        setTimeout(() => {
-            this.markedForDeletion = true;
+        setTimeout(() => {this.markedForDeletion = true;
         }, 1000);
     }
 }

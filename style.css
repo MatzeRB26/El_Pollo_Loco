@@ -107,17 +107,23 @@ canvas {
         0 4px 10px rgba(0,0,0,0.3);
 }
 
-footer {
-    position: relative;
+.game-screen{
+    position: absolute;
+    inset: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    width: 720px;
-    padding-top: 24px;
-    padding-bottom: 32px;
-    background-color: rgb(153, 68, 9);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.you-win img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hidden {
+    display: none;
 }
 
 .game-over {
@@ -139,6 +145,18 @@ footer {
     display: none;
 }
 
+footer {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 720px;
+    padding-top: 24px;
+    padding-bottom: 32px;
+    background-color: rgb(153, 68, 9);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 /* #region Fullscreen Mode */
 .fullscreen {
     cursor: pointer;

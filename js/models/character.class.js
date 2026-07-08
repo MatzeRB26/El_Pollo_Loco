@@ -101,9 +101,7 @@ export class Character extends MoveableObject {
 
     moveCharacter() {
         if (this.world.gameOver) return;
-        if (
-            this.world.keyboard.RIGHT &&
-            this.x < this.world.level.level_end_x
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x
         ) {
             this.moveRight();
             this.otherDirection = false;
@@ -126,6 +124,7 @@ export class Character extends MoveableObject {
     }
 
     playCharacterAnimation() {
+        if (this.isGameStopped()) return;
         if (this.isDead()) return this.handleDeath();
         if (this.isHurt()) return this.playAnimation(this.IMAGES_HURT);
         if (this.isAboveGround())
@@ -150,6 +149,7 @@ export class Character extends MoveableObject {
         this.playAnimation(this.IMAGES_DEAD, false);
         if (this.dead) return;
         this.dead = true;
+        this.world.stopGame();
         setTimeout(() => {
             document.getElementById("game-over").classList.remove("hidden");
             this.world.gameOver = true;

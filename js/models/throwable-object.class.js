@@ -41,6 +41,7 @@ export class ThrowableObject extends MoveableObject {
     this.speedY = 25;
     this.applyGravity();
     this.throwInterval = setInterval(() => {
+        if (this.isGameStopped()) return;
         if (this.isSplashing) return;
         if (this.otherDirection) {
             this.x -= this.speedX;
@@ -52,6 +53,7 @@ export class ThrowableObject extends MoveableObject {
 
     animate() {
         this.animationInterval = setInterval(() => {
+            if (this.isGameStopped()) return;
             if (this.isSplashing) return;
             this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
             this.checkGroundHit();

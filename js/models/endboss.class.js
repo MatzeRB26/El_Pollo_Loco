@@ -74,18 +74,18 @@ export class Endboss extends MoveableObject {
 
     animate() {
         setInterval(() => {
+            if (this.world?.gameOver)return;
             if (this.activated && !this.isDead()) this.moveLeft();
         }, 1000 / 60);
         setInterval(() => {
+            if (this.isGameStopped()) return;
             if (this.isDead()) return this.playAnimation(this.IMAGES_DEAD, false);
             if (this.isHurt()) return this.playAnimation(this.IMAGES_HURT);
             if (!this.activated) return this.playAnimation(this.IMAGES_WALKING);
             if (!this.alertPlayed && this.currentImage >= this.IMAGES_ALERT.length) {this.alertPlayed = true;
                 this.currentImage = 0;
             }
-            this.playAnimation(
-                this.alertPlayed ? this.IMAGES_WALKING : this.IMAGES_ALERT,
-            );
+            this.playAnimation(this.alertPlayed ? this.IMAGES_WALKING : this.IMAGES_ALERT,);
         }, 120);
     }
 
@@ -124,9 +124,6 @@ export class Endboss extends MoveableObject {
             this.deadAnimationFinished = true;
             this.img =
                 this.imageCache[this.IMAGES_DEAD[this.IMAGES_DEAD.length - 1]];
-            setTimeout(() => {
-                this.markedForDeletion = true;
-            }, 600);
-        }
+            setTimeout(() => {this.markedForDeletion = true;}, 600);}
     }
 }

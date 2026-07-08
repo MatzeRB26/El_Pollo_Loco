@@ -92,4 +92,8 @@ export class MoveableObject extends DrawableObject {
     jump() {
         this.speedY = 30;
     }
+
+    isGameStopped() {
+    return this.world?.gameOver;
+    }
 }

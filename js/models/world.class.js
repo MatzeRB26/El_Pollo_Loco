@@ -28,6 +28,7 @@ export class World {
     collectedCoins = 0;
     maxCoins = 10;
     maxBottles = 10;
+    gameWon = false;
     gameOver = false;
 
     constructor(canvas, keyboard, level) {
@@ -46,6 +47,7 @@ export class World {
 
     run() {
         setInterval(() => {
+            if (this.gameOver)return;
             this.activateEndboss();
             this.checkCollisions();
             this.checkCoinCollisions();
@@ -128,9 +130,11 @@ export class World {
                     bottle.splash();
                     if (enemy instanceof Endboss) {
                         enemy.hit();
-                        this.endbossStatusBar.setPercentage(enemy.energy);
-                    } else {
-                        enemy.die();
+                        this.endbossStatusBar.setPercentage(enemy.energy);}
+                    if (enemy.isDead() && !this.gameWon){
+                        this.gameOver = true;
+                        setTimeout(() => {document.getElementById('you-win').classList.remove('hidden');
+                        }, 1000);
                     }
                 }
             });
@@ -214,5 +218,9 @@ export class World {
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
+    }
+
+    stopGame(){
+        this.gameOver = true;
     }
 }

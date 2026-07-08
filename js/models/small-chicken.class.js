@@ -38,6 +38,7 @@ export class SmallChicken extends MoveableObject {
 
     animate() {
         this.moveInterval = setInterval(() => {
+            if (this.isGameStopped()) return;
             this.moveLeft();
         }, 1000 / 60);
         this.animationInterval = setInterval(() => {

@@ -4,7 +4,6 @@ export class Chicken extends MoveableObject {
     height = 60;
     width = 80;
     y = 360;
-    showHitBox = true;
     markedForDeletion = false;
 
     IMAGES_WALKING = [

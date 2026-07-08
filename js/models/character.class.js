@@ -6,7 +6,6 @@ export class Character extends MoveableObject {
     width = 130;
     height = 250;
     speed = 10;
-    showHitBox = true;
 
     world;
     dead = false;

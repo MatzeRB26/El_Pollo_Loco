@@ -4,7 +4,6 @@ export class SmallChicken extends MoveableObject {
     height = 50;
     width = 50;
     y = 390;
-    showHitBox = true;
     markedForDeletion = false;
 
     IMAGES_WALKING = [

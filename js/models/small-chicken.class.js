@@ -27,7 +27,7 @@ export class SmallChicken extends MoveableObject {
         super();
         this.loadImage('assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
-        this.x = 1500 + Math.random() * 800;
+        this.x = 1000 + Math.random() * 800;
         this.y = 400
         this.speed = 0.15 + Math.random() * 0.5;
         this.animate();
@@ -37,7 +37,7 @@ export class SmallChicken extends MoveableObject {
 
     animate() {
         this.moveInterval = setInterval(() => {
-            if (this.isGameStopped()) return;
+            if (this.world?.gameOver) return;
             this.moveLeft();
         }, 1000 / 60);
         this.animationInterval = setInterval(() => {

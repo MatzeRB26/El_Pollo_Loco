@@ -4,7 +4,7 @@ import { SmallChicken } from "./small-chicken.class.js";
 import { Endboss } from "./endboss.class.js";
 import { Cloud } from "./cloud.class.js";
 import { BackgroundObject } from "./background-object.class.js";
-import { level1 } from "../levels/level1.js";
+import { createLevel1 } from "../levels/level1.js";
 import { StatusBar } from "./statusbar.class.js";
 import { ThrowableObject } from "./throwable-object.class.js";
 import { Coin } from "./coin.class.js";
@@ -14,7 +14,7 @@ import { EndbossStatusBar } from "./statusbar-endboss.class.js";
 
 export class World {
     character = new Character();
-    level = level1;
+    level = createLevel1;
     canvas;
     ctx;
     keyboard;
@@ -30,6 +30,7 @@ export class World {
     maxBottles = 10;
     gameWon = false;
     gameOver = false;
+    interval = [];
 
     constructor(canvas, keyboard, level) {
         this.ctx = canvas.getContext("2d");
@@ -221,6 +222,11 @@ export class World {
     }
 
     stopGame(){
-        this.gameOver = true;
+    this.gameOver = true;
+    }
+
+    addInterval(fn, time) {
+    const id = setInterval(fn, time);
+    this.intervals.push(id);
     }
 }

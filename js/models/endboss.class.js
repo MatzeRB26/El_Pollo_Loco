@@ -7,7 +7,6 @@ export class Endboss extends MoveableObject {
     x = 2450;
     speed = 2;
     energy = 100;
-    showHitBox = true;
     activated = false;
     alertPlayed = false;
     markedForDeletion = false;
@@ -74,7 +73,7 @@ export class Endboss extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (this.world?.gameOver)return;
+            if (this.world?.gameOver) return;
             if (this.activated && !this.isDead()) this.moveLeft();
         }, 1000 / 60);
         setInterval(() => {

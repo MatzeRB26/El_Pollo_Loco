@@ -28,7 +28,7 @@ export class MoveableObject extends DrawableObject {
     }
 
     isAboveGround() {
-        return this.y < 180;
+        return this.y < 185;
     }
 
     getRealFrame() {
@@ -59,7 +59,7 @@ export class MoveableObject extends DrawableObject {
     }
 
     isHurt() {
-        let timepassed = (Date.now() - this.lastHit) / 1000;
+        let timepassed = (Date.now() - this.lastHit) / 500;
         return timepassed < 1;
     }
 

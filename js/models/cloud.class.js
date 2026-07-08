@@ -22,7 +22,7 @@ export class Cloud extends MoveableObject {
 
     moveLeft() {
         setInterval(() => {
-            if (this.isGameStopped()) return;
+            if (this.world?.gameOver) return;
             this.x -= this.speed;
         }, 1000 / 60);
     }

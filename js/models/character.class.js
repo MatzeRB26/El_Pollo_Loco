@@ -7,6 +7,7 @@ export class Character extends MoveableObject {
     height = 250;
     speed = 10;
 
+
     world;
     dead = false;
     lastAction = Date.now();
@@ -99,47 +100,37 @@ export class Character extends MoveableObject {
     }
 
     moveCharacter() {
-        if (this.world.gameOver) return;
-        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x
-        ) {
+        if (this.world?.gameOver) return;
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
             this.moveRight();
             this.otherDirection = false;
             this.updateLastAction();
-        }
-        if (this.world.keyboard.LEFT && this.x > 0) {
+        } if (this.world.keyboard.LEFT && this.x > 0) {
             this.moveLeft();
             this.otherDirection = true;
             this.updateLastAction();
-        }
-        if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+        } if (this.world.keyboard.SPACE && !this.isAboveGround()) {
             this.jump();
             this.updateLastAction();
         }
         this.world.camera_x = -this.x + 100;
     }
 
-    isSleeping() {
-        return Date.now() - this.lastAction > 5000;
-    }
-
     playCharacterAnimation() {
         if (this.isGameStopped()) return;
         if (this.isDead()) return this.handleDeath();
         if (this.isHurt()) return this.playAnimation(this.IMAGES_HURT);
-        if (this.isAboveGround())
-            return this.playAnimation(this.IMAGES_JUMPING);
-        if (this.isSleeping()) {
-            return this.playAnimation(this.IMAGES_SLEEP);
+        if (this.isAboveGround()) return this.playAnimation(this.IMAGES_JUMPING);
+        if (this.isSleeping()) {return this.playAnimation(this.IMAGES_SLEEP);
         }
-        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-            return this.playAnimation(this.IMAGES_WALKING);
-        }
+        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {return this.playAnimation(this.IMAGES_WALKING);}
         this.playAnimation(this.IMAGES_IDLE);
     }
 
     updateLastAction() {
         this.lastAction = Date.now();
     }
+
     isSleeping() {
         return Date.now() - this.lastAction >= 10000;
     }
@@ -152,6 +143,6 @@ export class Character extends MoveableObject {
         setTimeout(() => {
             document.getElementById("game-over").classList.remove("hidden");
             this.world.gameOver = true;
-        }, 1000);
+        }, 500);
     }
 }

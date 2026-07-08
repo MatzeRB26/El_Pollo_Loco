@@ -7,7 +7,7 @@ import { Chicken } from "./models/chicken.class.js";
 import { World } from "./models/world.class.js";
 import { Keyboard } from "./models/keyboard.class.js";
 import { Endboss } from "./models/endboss.class.js";
-import { level1 } from "./levels/level1.js";
+import { createLevel1 } from "./levels/level1.js";
 import { Coin } from "./models/coin.class.js";
 
 let canvas; // eine variable für das Bildformat(720x480px)
@@ -16,7 +16,6 @@ let keyboard = new Keyboard();
 
 function init() {
     canvas = document.getElementById("canvas");
-    world = new World(canvas, keyboard, level1);
 }
 init();
 
@@ -24,10 +23,28 @@ function startGame() {
     document.getElementById("startScreen").style.display = "none";
     document.getElementById("canvas").style.display = "block";
     const canvas = document.getElementById("canvas");
-    world = new World(canvas, keyboard);
+    world = new World(canvas, keyboard, createLevel1());
 }
 window.startGame = startGame;
 
+function restartGame() {
+    document.getElementById("game-over").classList.add("hidden");
+    document.getElementById("you-win").classList.add("hidden");
+
+    world = new World(canvas, keyboard, createLevel1());
+}
+window.restartGame = restartGame;
+
+function returnToMenu() {
+    if (world) {world.stopGame();}
+    document.getElementById("game-over").classList.add("hidden");
+    document.getElementById("you-win").classList.add("hidden");
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("startScreen").style.display = "flex";
+
+    world = null;
+}
+window.returnToMenu = returnToMenu;
 // #region Fullscreen
 window.toggleFullscreen = function () {
     let canvas = document.getElementById("canvas");

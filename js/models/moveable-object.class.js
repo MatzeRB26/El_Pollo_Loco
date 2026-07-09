@@ -38,7 +38,7 @@ export class MoveableObject extends DrawableObject {
         this.rH = this.height - this.offset.top - this.offset.bottom;
     }
 
-    isColliding(mo) {// Character collidiert mit dem Hünchen
+    isColliding(mo) {
         this.getRealFrame();
         mo.getRealFrame();
         return (

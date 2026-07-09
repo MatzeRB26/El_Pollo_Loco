@@ -68,17 +68,16 @@ export class MoveableObject extends DrawableObject {
     }
 
     playAnimation(images, loop = true) {
-        if (this.currentAnimation !== images) {
-            this.currentAnimation = images;
-            this.currentImage = 0;
-        }
-        let index = loop
-            ? this.currentImage % images.length
-            : Math.min(this.currentImage, images.length - 1);
-        this.img = this.imageCache[images[index]];
-        if (loop || this.currentImage < images.length - 1) {
-            this.currentImage++;
-        }
+    if (this.currentAnimation !== images) {
+        this.currentAnimation = images;
+        this.currentImage = 0;
+    }
+    let index = this.currentImage;
+    if (loop) index = this.currentImage % images.length;
+    else if (this.currentImage >= images.length) index = images.length - 1;
+    this.img = this.imageCache[images[index]];
+    if (loop) this.currentImage++;
+    else if (this.currentImage < images.length - 1) this.currentImage++;
     }
 
     moveRight() {

@@ -3,13 +3,17 @@
     src: url("./assets/fonts/zabars.ttf");
 }
 
+@font-face {
+    font-family: "WaitNotes";
+    src: url("./assets/fonts/WaitNotes.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
     box-sizing: border-box;
     text-decoration: none;
-    position: relative;
     list-style: none;
     font-size: inherit;
     color: inherit;
@@ -50,42 +54,95 @@ h1 {
 #canvas {
     width:100%;
     height:100%;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
 }
 
-canvas {
-    background-color: black;
-    display: block;
+.overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 50;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
+.hidden {
+    display: none;
+}
+
+.endscreen-img {
+    width: 600px;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
+/* #region Home / Return Button */
+.endscreen-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.endscreen-button img {
+    width: 70px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#home {
+    bottom: 20px;
+    left: 200px;
+}
+
+#restart {
+    bottom: 20px;
+    right: 200px;
+}
+
+.menu-btn{
+    position: absolute;
+    padding: 8px 16px;
+    background-color: #994409;
+    box-shadow: 0px 0px 6px 1px #000;
+    border: 1px solid #f6bb60;
+    border-radius: 16px;
+}
+
+.return-btn{
+    position: absolute;
+    padding: 8px 16px;
+    background-color: #994409;
+    box-shadow: 0px 0px 6px 1px #000;
+    border: 1px solid #f6bb60;
+    border-radius: 16px;
+}
+
+.endscreen-button img:hover{
+    transform: scale(1.15);
+}
+/* #endregion */
+
+/* #region StartButton */
 #startScreen {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
 }
 
-.overlay{
-    position:absolute;
-    inset:0;
-    width: 100%;
-    height: 100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:rgba(0,0,0,.35);
-}
-
-.overlay img {
-    position: absolute;
+#startScreen img{
     width: 720px;
     height: 480px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
 }
 
 #startScreen button {
@@ -97,7 +154,7 @@ canvas {
     font-size: 32px;
     font-family: "zabars";
     text-transform: uppercase;
-    color: black;
+    color:  #7a3f00;
     background: linear-gradient(#ffcb45, #ff8c00);
     border: 4px solid #7a3f00;
     border-radius: 12px;
@@ -112,37 +169,7 @@ canvas {
     background: linear-gradient(#ffd85f, #ff9d1f);
     transform: translateX(-50%) scale(1.08);
 }
-
-#startScreen button:active {
-    transform: translateX(-50%) translateY(4px);
-    box-shadow:
-        0 2px 0 #7a3f00,
-        0 4px 10px rgba(0,0,0,0.3);
-}
-
-.game-screen{
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.game-screen img {
-    width: 100%;
-    height: 100%;
-}
-
-.hidden {
-    display: none;
-}
-
-.result-screen{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
+/* #endregion */
 
 footer {
     position: relative;
@@ -157,41 +184,80 @@ footer {
     border-bottom-right-radius: 20px;
 }
 
-/* #region return button */
-.return-btn {
-    cursor: pointer;
+/* #region Info-Controlls */
+#help{
     width: 32px;
+    height: 32px;
+    cursor: pointer;
 }
 
-.return-btn:hover {
+#help:hover {
     filter: invert(90%) sepia(96%) saturate(6682%) hue-rotate(310deg)
         brightness(97%) contrast(99%);
     transition: 100ms;
 }
 
-#restart {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+#help-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    padding: 25px;
+    background-color: #994409;
+    border: 1px solid #f6bb60;
+    box-shadow: 0 10px 25px rgba(0,0,0,.5);
+    border-radius: 12px;
+    z-index: 100;
 }
-/* #endregion */
 
-/* #region Home button */
-.menu-btn {
+#help-dialog h2 {
+    text-align: center;  
+    font-size: 60px;
+    font-weight: lighter;
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+    color: #f6bb60;
+    text-shadow: 2px 2px 8px rgb(0, 0, 0, 0.7);
+}
+
+.control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 12px;
+    background: rgba(255,255,255,.2);
+    border-radius: 12px;
+}
+
+.control span {
+    font-size: 20px;
+    font-family: "WaitNotes";
+    font-weight: bold;
+}
+
+.control p {
+    font-size: 20px;
+    font-family: "WaitNotes";
+    font-weight: bold;
+}
+
+#help-dialog button {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 0;
+    padding: 10px 30px;
+    letter-spacing: 2px;
+    font-size: 30px;
+    background: #f6ba60c0;
+    border: 3px solid #7a3f00;
+    border-radius: 10px;
     cursor: pointer;
-    width: 32px;
 }
 
-.menu-btn:hover {
-    filter: invert(90%) sepia(96%) saturate(6682%) hue-rotate(310deg)
-        brightness(97%) contrast(99%);
-    transition: 100ms;
-}
-
-#home {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+#help-dialog button:hover {
+    background: #ffd966;
 }
 /* #endregion */
 

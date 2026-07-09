@@ -45,6 +45,11 @@ function returnToMenu() {
     world = null;
 }
 window.returnToMenu = returnToMenu;
+
+window.toggleHelp = function() {
+    document.getElementById("help-dialog").classList.toggle("hidden");
+};
+
 // #region Fullscreen
 window.toggleFullscreen = function () {
     let canvas = document.getElementById("canvas");

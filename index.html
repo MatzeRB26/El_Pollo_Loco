@@ -15,26 +15,55 @@
     <body>
         <h1>El Pollo loco</h1>
 
-        <div id="game-container">
+    <div id="game-container">
             <canvas id="canvas" width="720" height="480"></canvas>
+
             <div id="startScreen" class="overlay">
                 <img src="./assets/img/9_intro_outro_screens/start/startscreen_2.png" alt="Startscreen" />
                 <button onclick="startGame()">Start Game</button>
             </div>
 
-        <div id="you-win" class="overlay hidden">
-                <img src="assets/img/You won, you lost/You Win A.png" alt="You Win">
+            <div id="you-win" class="overlay hidden">
+                <img class="endscreen-img" src="assets/img/You won, you lost/You Win A.png" alt="You Win">
+                <div class="endscreen-button">
+                    <img onclick="returnToMenu()" id="home" class="menu-btn hover" src="./assets/icons/frontPage.png" >
+                    <img onclick="restartGame()" id="restart" class="return-btn hover" src="./assets/icons/restart.png" >
+                </div>
             </div>
+
+            <div id="game-over" class="overlay hidden">
+                <img class="endscreen-img" src="assets/img/You won, you lost/You lost b.png" alt="Game Over"/>
+                <div class="endscreen-button">
+                    <img onclick="returnToMenu()" id="home" class="menu-btn hover" src="./assets/icons/frontPage.png" >
+                    <img onclick="restartGame()" id="restart" class="return-btn hover" src="./assets/icons/restart.png" >
+                </div>
+            </div>
+
+        <div id="help-dialog" class="hidden">
+            <h2>Controls</h2>
+        <div class="control">
+            <span>⬅️</span>
+            <p>Move Left</p>
         </div>
-            
-        <div id="game-over" class="overlay hidden">
-                <img src="assets/img/You won, you lost/Game over A.png" alt="Game Over"/>
+        <div class="control">
+            <span>➡️</span>
+            <p>Move Right</p>
         </div>
+        <div class="control">
+            <span>SPACE</span>
+            <p>Jump</p>
+        </div>
+        <div class="control">
+            <span>D</span>
+            <p>Throw Bottle</p>
+        </div>
+            <button onclick="toggleHelp()">Close</button>
+        </div>
+    </div>
 
         <footer>
-            <img id=home class="menu-btn hover" src="./assets/icons/frontPage.png" onclick="returnToMenu()">
-            <img id=restart class="return-btn hover" src="./assets/icons/restart.png" onclick="restartGame()">
-            <img onclick="toggleFullscreen()" id="open-fullscreen" src="./assets/icons/fullscreen.png"class="fullscreen hover"/>
+            <img onclick="toggleHelp()" id="help" class="hover" src="./assets/icons/info-button.png" alt="controls">
+            <img onclick="toggleFullscreen()" id="open-fullscreen" class="fullscreen hover" src="./assets/icons/fullscreen.png"/>
         </footer>
     </body>
 </html>

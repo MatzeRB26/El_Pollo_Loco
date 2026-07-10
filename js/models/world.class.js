@@ -70,7 +70,7 @@ export class World {
         }, 300);
         }
     }
-    
+
     throwBottle(){
         let x;
         if(this.character.otherDirection){
@@ -87,7 +87,7 @@ export class World {
 
     activateEndboss() {
         this.level.enemies.forEach((enemy) => {
-            if (enemy instanceof Endboss && !enemy.activated && this.character.x > 2200) {
+            if (enemy instanceof Endboss && !enemy.activated && this.character.x > 2000) {
                 enemy.activate();
             }
         });
@@ -128,13 +128,15 @@ export class World {
     }
 
     checkBottleCollisions() {
-    this.throwableObjects.forEach(bottle => {
-    this.level.enemies.forEach(enemy => {
-        if (!bottle.isColliding(enemy) || bottle.isSplashing) return;
+    this.throwableObjects.forEach(bottle => {this.level.enemies.forEach(enemy => { if (!bottle.isColliding(enemy) || bottle.isSplashing) return;
         bottle.splash();
-        if (enemy instanceof Endboss) {
-            enemy.hit();
+        if (enemy instanceof Endboss) { enemy.hit();
             this.endbossStatusBar.setPercentage(enemy.energy);
+        if (enemy.isDead() && !this.gameWon){
+            this.gameOver = true;
+            setTimeout(() => {document.getElementById('you-win').classList.remove('hidden');
+            }, 1000);
+        }
         } else {
             enemy.die();
         } });

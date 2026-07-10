@@ -70,12 +70,15 @@ export class World {
         }, 300);
         }
     }
-
-    throwBottle() {
-    let x = this.character.otherDirection
-        ? this.character.x - 20
-        : this.character.x + 50;
-        let bottle = new ThrowableObject(x, this.character.y + 100,this.character.otherDirection);
+    
+    throwBottle(){
+        let x;
+        if(this.character.otherDirection){
+            x = this.character.x - 20;
+        } else {
+            x = this.character.x + 50;
+        }
+        let bottle = new ThrowableObject(x, this.character.y + 100, this.character.otherDirection);
         this.throwableObjects.push(bottle);
         this.character.collectedBottles--;
         let p = (this.character.collectedBottles / this.maxBottles) * 100;
@@ -125,23 +128,18 @@ export class World {
     }
 
     checkBottleCollisions() {
-        this.throwableObjects.forEach((bottle) => {
-            this.level.enemies.forEach((enemy) => {
-                if (bottle.isColliding(enemy) && !bottle.isSplashing) {
-                    bottle.splash();
-                    if (enemy instanceof Endboss) {
-                        enemy.hit();
-                        this.endbossStatusBar.setPercentage(enemy.energy);}
-                    if (enemy.isDead() && !this.gameWon){
-                        this.gameOver = true;
-                        setTimeout(() => {document.getElementById('you-win').classList.remove('hidden');
-                        }, 1000);
-                    }
-                }
-            });
-        });
-        this.throwableObjects = this.throwableObjects.filter(
-            (bottle) => !bottle.markedForDeletion,);
+    this.throwableObjects.forEach(bottle => {
+    this.level.enemies.forEach(enemy => {
+        if (!bottle.isColliding(enemy) || bottle.isSplashing) return;
+        bottle.splash();
+        if (enemy instanceof Endboss) {
+            enemy.hit();
+            this.endbossStatusBar.setPercentage(enemy.energy);
+        } else {
+            enemy.die();
+        } });
+    });
+    this.throwableObjects = this.throwableObjects.filter(bottle => !bottle.markedForDeletion);
     }
 
     checkCoinCollisions() {

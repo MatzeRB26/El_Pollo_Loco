@@ -24,6 +24,7 @@ function startGame() {
     document.getElementById("canvas").style.display = "block";
     const canvas = document.getElementById("canvas");
     world = new World(canvas, keyboard, createLevel1());
+    world.sound.play("gameStart")
 }
 window.startGame = startGame;
 

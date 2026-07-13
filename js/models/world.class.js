@@ -11,6 +11,7 @@ import { Coin } from "./coin.class.js";
 import { CoinStatusBar } from "./statusbar-coin.class.js";
 import { BottleStatusBar } from "./statusbar-bottle.class.js";
 import { EndbossStatusBar } from "./statusbar-endboss.class.js";
+import { SoundManager } from "./sound-manager.class.js";
 
 export class World {
     character = new Character();
@@ -31,6 +32,7 @@ export class World {
     gameWon = false;
     gameOver = false;
     interval = [];
+    sound = new SoundManager();
 
     constructor(canvas, keyboard, level) {
         this.ctx = canvas.getContext("2d");
@@ -43,7 +45,10 @@ export class World {
     }
 
     setWorld() {
-        this.character.world = this;
+    this.character.world = this;
+    this.level.enemies.forEach(enemy => {
+        enemy.world = this;
+    });
     }
 
     run() {
@@ -79,6 +84,7 @@ export class World {
             x = this.character.x + 50;
         }
         let bottle = new ThrowableObject(x, this.character.y + 100, this.character.otherDirection);
+        bottle.world = this
         this.throwableObjects.push(bottle);
         this.character.collectedBottles--;
         let p = (this.character.collectedBottles / this.maxBottles) * 100;
@@ -89,6 +95,7 @@ export class World {
         this.level.enemies.forEach((enemy) => {
             if (enemy instanceof Endboss && !enemy.activated && this.character.x > 2000) {
                 enemy.activate();
+                this.sound.play('endbossApproach');
             }
         });
     }
@@ -133,12 +140,12 @@ export class World {
         if (enemy instanceof Endboss) { enemy.hit();
             this.endbossStatusBar.setPercentage(enemy.energy);
         if (enemy.isDead() && !this.gameWon){
-            this.gameOver = true;
-            setTimeout(() => {document.getElementById('you-win').classList.remove('hidden');
+            this.gameWon = true;
+            setTimeout(() => {this.gameOver = true;
+            document.getElementById('you-win').classList.remove('hidden');
             }, 1000);
-        }
-        } else {
-            enemy.die();
+        }} else 
+            {enemy.die();
         } });
     });
     this.throwableObjects = this.throwableObjects.filter(bottle => !bottle.markedForDeletion);
@@ -151,6 +158,7 @@ export class World {
                 this.collectedCoins++;
                 let percentage = (this.collectedCoins / this.maxCoins) * 100;
                 this.coinStatusBar.setPercentage(percentage);
+                this.sound.play('coin');
             }
         }
     }
@@ -159,12 +167,11 @@ export class World {
     for (let i = this.level.bottles.length - 1; i >= 0; i--) {
         let bottle = this.level.bottles[i];
         if (this.character.isColliding(bottle)) {
+            this.sound.play('bottleCollect');
             this.level.bottles.splice(i, 1);
             this.character.collectedBottles++;
             let p = (this.character.collectedBottles / this.maxBottles) * 100;
             this.bottleStatusBar.setPercentage(p);
-            console.log(this.character.collectedBottles);
-            console.log((this.character.collectedBottles / this.maxBottles) * 100);
         }
         }
     }
@@ -227,6 +234,6 @@ export class World {
 
     addInterval(fn, time) {
     const id = setInterval(fn, time);
-    this.intervals.push(id);
+    this.interval.push(id);
     }
 }

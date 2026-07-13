@@ -100,20 +100,30 @@ export class Character extends MoveableObject {
     }
 
     moveCharacter() {
-        if (this.world?.gameOver) return;
+        if (this.world?.gameOver) {this.world.sound.stop("run");
+        return;}
         if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
             this.moveRight();
             this.otherDirection = false;
             this.updateLastAction();
+            if (this.world.sound.sounds.run.paused) {
+            this.world.sound.play("run");
+            }
         } if (this.world.keyboard.LEFT && this.x > 0) {
             this.moveLeft();
             this.otherDirection = true;
             this.updateLastAction();
+            if (this.world.sound.sounds.run.paused) {
+            this.world.sound.play("run");
+            }
         } if (this.world.keyboard.SPACE && !this.isAboveGround()) {
             this.jump();
             this.updateLastAction();
         }
         this.world.camera_x = -this.x + 100;
+        if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT) {
+        this.world.sound.stop("run");
+        }
     }
 
     playCharacterAnimation() {
@@ -121,8 +131,12 @@ export class Character extends MoveableObject {
         if (this.isDead()) return this.handleDeath();
         if (this.isHurt()) return this.playAnimation(this.IMAGES_HURT);
         if (this.isAboveGround()) return this.playAnimation(this.IMAGES_JUMPING);
-        if (this.isSleeping()) {return this.playAnimation(this.IMAGES_SLEEP);
+        if (this.isSleeping()) {
+        if (this.world.sound.sounds.snoring.paused) {this.world.sound.play("snoring");
         }
+        return this.playAnimation(this.IMAGES_SLEEP);
+        }
+        this.world.sound.stop("snoring");
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {return this.playAnimation(this.IMAGES_WALKING);}
         this.playAnimation(this.IMAGES_IDLE);
     }
@@ -144,5 +158,6 @@ export class Character extends MoveableObject {
             document.getElementById("game-over").classList.remove("hidden");
             this.world.gameOver = true;
         }, 500);
+        this.world.sound.play('dead');
     }
 }

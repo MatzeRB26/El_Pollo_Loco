@@ -48,6 +48,7 @@ export class SmallChicken extends MoveableObject {
     die() {
         if (this.dead) return;
         this.dead = true;
+        this.world.sound.play('chickenDead2');
         clearInterval(this.moveInterval);
         clearInterval(this.animationInterval);
         this.loadImage(this.IMAGE_DEAD[0]);

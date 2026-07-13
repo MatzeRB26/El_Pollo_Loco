@@ -51,6 +51,7 @@ export class MoveableObject extends DrawableObject {
 
     hit() {
         if (this.isHurt() || this.isDead()) return;
+        this.world.sound.play('damage');
         this.energy -= 20;
         if (this.energy < 0) {
             this.energy = 0;
@@ -90,6 +91,7 @@ export class MoveableObject extends DrawableObject {
 
     jump() {
         this.speedY = 30;
+        this.world.sound.play('jump');
     }
 
     isGameStopped() {

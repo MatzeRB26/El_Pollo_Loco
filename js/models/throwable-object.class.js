@@ -69,6 +69,7 @@ export class ThrowableObject extends MoveableObject {
     splash() {
         if (this.isSplashing) return;
         this.isSplashing = true;
+        this.world.sound.play("bottleBreak");
         clearInterval(this.throwInterval);
         clearInterval(this.animationInterval);
         clearInterval(this.gravityInterval);

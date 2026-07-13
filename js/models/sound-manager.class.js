@@ -30,20 +30,22 @@ loadSounds(){
     this.sounds.snoring.loop = true;
 }
 
-play(name){
+play(name) {
     const sound = this.sounds[name];
     if (!sound) return;
-    sound.currentTime = 0;
+    if (name === "run" || name === "snoring") {if (!sound.paused) return;
+    } else {
+        sound.currentTime = 0;
+    }
     sound.play();
 }
 
-
-stop(name){
-    this.sounds[name]?.pause();
-    if(this.sounds[name]){
-        this.sounds[name].currentTime = 0;
-        }
-    }
+stop(name) {
+    const sound = this.sounds[name];
+    if (!sound) return;
+    sound.pause();
+    sound.currentTime = 0;
+}
 
     toggleMute() {
     this.muted = !this.muted;

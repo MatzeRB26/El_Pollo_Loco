@@ -235,6 +235,8 @@ export class World {
 
     stopGame(){
     this.gameOver = true;
+    this.sound.stop("run");
+    this.sound.stop("snoring");
     }
 
     addInterval(fn, time) {

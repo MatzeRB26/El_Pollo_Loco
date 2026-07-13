@@ -60,6 +60,10 @@ window.toggleHelp = function() {
     document.getElementById("help-dialog").classList.toggle("hidden");
 };
 
+window.toggleImprint = function () {
+    document.getElementById("imprint-dialog").classList.toggle("hidden");
+};
+
 // #region Fullscreen
 window.toggleFullscreen = function () {
     let canvas = document.getElementById("canvas");

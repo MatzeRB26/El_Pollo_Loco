@@ -290,6 +290,64 @@ footer {
 }
 /* #endregion */
 
+/* #region Impressum-btn */
+.info {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.info:hover {
+    filter: invert(90%) sepia(96%) saturate(6682%) hue-rotate(310deg)
+        brightness(97%) contrast(99%);
+    transition: 100ms;
+}
+
+#imprint-dialog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    padding: 25px;
+    background-color: #994409;
+    border: 1px solid #f6bb60;
+    box-shadow: 0 10px 25px rgba(0,0,0,.5);
+    border-radius: 12px;
+    z-index: 100;
+}
+
+#imprint-dialog h2 {
+    text-align: center;  
+    font-size: 60px;
+    font-weight: 100;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    color: #f6bb60;
+    text-shadow: 2px 2px 8px rgb(0, 0, 0, 0.7);
+}
+
+.dialog p {
+    font-size: 18px;
+    font-family: "WaitNotes";
+    font-weight: bold;
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    transform: scale(1.2);
+}
+/* #endregion */
+
 /* #region Responsive Smartphone */
 @media only screen and (max-width: 720px) {
     canvas {

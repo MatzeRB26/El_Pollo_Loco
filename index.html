@@ -1,13 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" translate="no">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="icon"
-            href="./assets/icons/hahnchen.png"
-            type="image/x-icon"
-        />
+        <link rel="icon" href="./assets/icons/hahnchen.png" type="image/x-icon"/>
         <link rel="stylesheet" href="./style.css" />
         <title>El Pollo Loco</title>
         <script type="module" src="./js/game.js"></script>
@@ -61,10 +57,24 @@
         </div>
     </div>
 
+    <div id="imprint-dialog" class="dialog hidden">
+        <span class="close-btn" onclick="toggleImprint()">&times;</span>
+        <h2>Impressum</h2>
+        <p>
+        Matthäus Stojak<br>
+        Geht dich nichts an Straße 18<br>
+        12345 Japan
+        </p>
+        <p>
+        E-Mail: jdmfreak@googlemail.com
+        </p>
+    </div>
+
         <footer>
             <img onclick="toggleSound()" id="sound-btn" class="sound" src="./assets/icons/soundOn.png" alt="sounds">
             <img onclick="toggleHelp()" id="help" class="help-ctr" src="./assets/icons/controls.png" alt="controls">
             <img onclick="toggleFullscreen()" id="open-fullscreen" class="fullscreen" src="./assets/icons/fullscreen.png"/>
+            <img onclick="toggleImprint()" id="imprint-btn" class="info" src="./assets/icons/info-button.png" alt="impressum">
         </footer>
     </body>
 </html>

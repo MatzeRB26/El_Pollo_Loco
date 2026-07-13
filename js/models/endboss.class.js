@@ -97,8 +97,7 @@ export class Endboss extends MoveableObject {
     if (this.isDead()) return;
     this.energy -= 20;
     this.lastHit = Date.now();
-    if (this.energy <= 0) {
-        this.energy = 0;
+    if (this.energy <= 0) {this.energy = 0;
         this.die();
         }
     }

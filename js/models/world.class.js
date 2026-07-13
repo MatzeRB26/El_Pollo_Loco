@@ -32,13 +32,13 @@ export class World {
     gameWon = false;
     gameOver = false;
     interval = [];
-    sound = new SoundManager();
 
-    constructor(canvas, keyboard, level) {
+    constructor(canvas, keyboard, level, sound) {
         this.ctx = canvas.getContext("2d");
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.level = level;
+        this.sound = sound;
         this.setWorld();
         this.draw();
         this.run();
@@ -126,9 +126,9 @@ export class World {
             return;
         }
         if (enemy instanceof SmallChicken){
-            this.character.hit(5);
-        } else {
             this.character.hit(10);
+        } else {
+            this.character.hit(15);
         }
         this.statusBar.setPercentage(this.character.energy);
     }

@@ -1,8 +1,12 @@
 export class SoundManager {
     sounds = {};
+    muted = false;
 
-    constructor(){
-        this.loadSounds();
+    constructor() {
+    this.loadSounds();
+    this.muted = localStorage.getItem("muted") === "true";
+    Object.values(this.sounds).forEach(sound => { sound.muted = this.muted;
+    });
     }
 
 loadSounds(){
@@ -41,10 +45,11 @@ stop(name){
         }
     }
 
-    stopAll() {
-    Object.values(this.sounds).forEach(sound => {
-        sound.pause();
-        sound.currentTime = 0;
+    toggleMute() {
+    this.muted = !this.muted;
+    Object.values(this.sounds).forEach(sound => {sound.muted = this.muted;
     });
-}
+    localStorage.setItem("muted", this.muted);
+    return this.muted;
+    }
 }

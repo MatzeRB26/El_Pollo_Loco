@@ -9,10 +9,12 @@ import { Keyboard } from "./models/keyboard.class.js";
 import { Endboss } from "./models/endboss.class.js";
 import { createLevel1 } from "./levels/level1.js";
 import { Coin } from "./models/coin.class.js";
+import { SoundManager } from "./models/sound-manager.class.js";
 
 let canvas; // eine variable für das Bildformat(720x480px)
 let world;
 let keyboard = new Keyboard();
+let sound = new SoundManager();
 
 function init() {
     canvas = document.getElementById("canvas");
@@ -23,16 +25,23 @@ function startGame() {
     document.getElementById("startScreen").style.display = "none";
     document.getElementById("canvas").style.display = "block";
     const canvas = document.getElementById("canvas");
-    world = new World(canvas, keyboard, createLevel1());
+    world = new World(canvas, keyboard, createLevel1(), sound);
     world.sound.play("gameStart")
 }
 window.startGame = startGame;
+
+function toggleSound() {
+    const manager = world ? world.sound : sound;
+    const muted = manager.toggleMute();
+    document.getElementById("sound-btn").src = muted ? "assets/icons/soundOff.png" : "assets/icons/soundOn.png";
+}
+window.toggleSound = toggleSound;
 
 function restartGame() {
     document.getElementById("game-over").classList.add("hidden");
     document.getElementById("you-win").classList.add("hidden");
 
-    world = new World(canvas, keyboard, createLevel1());
+    world = new World(canvas, keyboard, createLevel1(), sound);
 }
 window.restartGame = restartGame;
 

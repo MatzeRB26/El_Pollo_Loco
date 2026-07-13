@@ -184,6 +184,21 @@ footer {
     border-bottom-right-radius: 20px;
 }
 
+/* #region Sound-Button */
+#sound-btn {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sound:hover {
+    filter: invert(90%) sepia(96%) saturate(6682%) hue-rotate(310deg)
+        brightness(97%) contrast(99%);
+    transition: 100ms;
+}
+/* #endregion */
+
 /* #region Info-Controlls */
 #help{
     width: 32px;
@@ -191,7 +206,7 @@ footer {
     cursor: pointer;
 }
 
-#help:hover {
+.help-ctr:hover {
     filter: invert(90%) sepia(96%) saturate(6682%) hue-rotate(310deg)
         brightness(97%) contrast(99%);
     transition: 100ms;
@@ -257,8 +272,9 @@ footer {
 
 /* #region Fullscreen Mode */
 .fullscreen {
-    cursor: pointer;
     width: 32px;
+    height: 32px;
+    cursor: pointer;
 }
 
 .fullscreen:hover {

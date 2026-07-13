@@ -100,30 +100,20 @@ export class Character extends MoveableObject {
     }
 
     moveCharacter() {
-        if (this.world?.gameOver) {this.world.sound.stop("run");
-        return;}
-        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-            this.moveRight();
-            this.otherDirection = false;
-            this.updateLastAction();
-            if (this.world.sound.sounds.run.paused) {
-            this.world.sound.play("run");
-            }
-        } if (this.world.keyboard.LEFT && this.x > 0) {
-            this.moveLeft();
-            this.otherDirection = true;
-            this.updateLastAction();
-            if (this.world.sound.sounds.run.paused) {
-            this.world.sound.play("run");
-            }
-        } if (this.world.keyboard.SPACE && !this.isAboveGround()) {
-            this.jump();
-            this.updateLastAction();
-        }
-        this.world.camera_x = -this.x + 100;
-        if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT) {
-        this.world.sound.stop("run");
-        }
+    if (this.world?.gameOver) return this.world.sound.stop("run");
+    if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+        this.moveRight();
+        this.otherDirection = false;
+    } else if (this.world.keyboard.LEFT && this.x > 0) {this.moveLeft();
+        this.otherDirection = true;
+    }
+    if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {this.updateLastAction();
+        if (this.world.sound.sounds.run.paused) this.world.sound.play("run");
+    } else this.world.sound.stop("run");
+    if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+        this.jump();
+        this.updateLastAction();
+    } this.world.camera_x = -this.x + 100;
     }
 
     playCharacterAnimation() {

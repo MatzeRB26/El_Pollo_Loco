@@ -101,8 +101,9 @@ export class World {
     }
 
     isJumpAttack(enemy) {
-        let feet = this.character.rY + this.character.rH;
-        return this.character.speedY < 0 && feet < enemy.rY + 20;
+    const feet = this.character.rY + this.character.rH;
+    const tolerance = enemy instanceof SmallChicken ? 18 : 25;
+    return ( this.character.speedY < 0 && feet >= enemy.rY && feet <= enemy.rY + tolerance);
     }
 
     checkCollisions() {
@@ -120,17 +121,20 @@ export class World {
     handleChicken(enemy) {
         if (this.character.isHurt()) return;
         const feet = this.character.rY + this.character.rH;
-        if (this.character.speedY < 0 && feet < enemy.rY + 25) {
-            enemy.die();
+        if (this.isJumpAttack(enemy)) {enemy.die();
             this.character.jump();
             return;
         }
-        this.character.hit();
+        if (enemy instanceof SmallChicken){
+            this.character.hit(5);
+        } else {
+            this.character.hit(10);
+        }
         this.statusBar.setPercentage(this.character.energy);
     }
 
     handleEndboss(enemy) {
-        this.character.hit();
+        this.character.hit(20);
         this.statusBar.setPercentage(this.character.energy);
     }
 
@@ -141,6 +145,7 @@ export class World {
             this.endbossStatusBar.setPercentage(enemy.energy);
         if (enemy.isDead() && !this.gameWon){
             this.gameWon = true;
+            this.sound.play('win');
             setTimeout(() => {this.gameOver = true;
             document.getElementById('you-win').classList.remove('hidden');
             }, 1000);

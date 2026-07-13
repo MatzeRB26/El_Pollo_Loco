@@ -8,6 +8,7 @@ export class SoundManager {
 loadSounds(){
     this.sounds = {
         gameStart: new Audio("audio/sounds/game/gameStart.mp3"),
+            win: new Audio("audio/sounds/game/win.mp3"),
             jump: new Audio("audio/sounds/character/characterJump.wav"),
             run: new Audio("audio/sounds/character/characterRun.mp3"),
             snoring: new Audio("audio/sounds/character/characterSnoring.mp3"),

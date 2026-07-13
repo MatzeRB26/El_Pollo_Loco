@@ -49,10 +49,10 @@ export class MoveableObject extends DrawableObject {
         );
     }
 
-    hit() {
+    hit(damage = 20) {
         if (this.isHurt() || this.isDead()) return;
         this.world.sound.play('damage');
-        this.energy -= 20;
+        this.energy -= damage;
         if (this.energy < 0) {
             this.energy = 0;
         }

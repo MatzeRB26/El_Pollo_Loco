@@ -30,10 +30,10 @@ body {
     min-height: 100vh;
     min-width: 100vw;
     background-image: url("assets/img/raniramli-desert-5396906.jpg");
-    font-family: "zabars", "sans-serif";
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    font-family: "zabars", "sans-serif";
 }
 
 h1 {
@@ -199,7 +199,7 @@ footer {
 }
 /* #endregion */
 
-/* #region Info-Controlls */
+/* #region Info-Controls */
 #help{
     width: 32px;
     height: 32px;
@@ -348,16 +348,147 @@ footer {
 }
 /* #endregion */
 
-/* #region Responsive Smartphone */
-@media only screen and (max-width: 720px) {
-    canvas {
-        width: 100%;
+/* #region Responsive */
+#rotate-device{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+#rotate-device img{
+    width:220px;
+}
+
+#mobile-controls{
+    position:absolute;
+    left:20px;
+    right:20px;
+    bottom:20px;
+    display:none;
+    justify-content:space-between;
+    align-items:flex-end;
+    z-index:500;
+}
+
+.mobile-btn{
+    position:absolute;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(153,68,9,.9);
+    border: 3px solid #f6bb60;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+}
+
+#btn-left{
+    left: 20px;
+    bottom: 10px;
+}
+
+.mobile-btn img{
+    width: 30px;
+    height: 30px;
+}
+
+#btn-right{
+    left: 105px;
+    bottom: 10px;
+}
+
+#btn-jump{
+    right: 105px;
+    bottom: 10px;
+}
+
+#btn-throw{
+    right: 20px;
+    bottom: 10px;
+}
+
+#btn-sound{
+    position:absolute;
+    left:50%;
+    bottom: 1px;
+    transform:translateX(-50%);
+}
+
+#mobile-sound {
+    width:25px;
+    height:25px;
+}
+
+@media (max-width:768px) and (orientation:landscape) {
+    #startScreen{
+        width:100%;
+        height:100%;
+    }
+
+    #startScreen img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    #startScreen button{
+        top:50px;
+        font-size:24px;
+        padding:12px 32px;
+    }
+
+    h1{
+        display:none;
+    }
+
+    footer{
+        display:none;
+    }
+
+    #game-container{
+    width:min(100vw, calc(100vh * 1.5));
+    height:min(100vh, calc(100vw / 1.5));
+    }
+
+    #canvas{
+        width:100%;
+        height:100%;
+    }
+
+    #mobile-controls{
+        display:block;
+    }
+
+    #home {
+    bottom: 50px;
+    left: 250px;
+}
+
+#restart {
+    bottom: 50px;
+    right: 250px;
+}
+
+    body{
+        overflow:hidden;
     }
 }
 
-@media only screen and (max-height: 480px) {
-    canvas {
-        height: 100vh;
+@media (max-width:720px) and (orientation:portrait){
+    h1,
+    footer,
+    #game-container{
+        display:none;
+    }
+
+    #rotate-device{
+        display:flex;
     }
 }
 /* #endregion */

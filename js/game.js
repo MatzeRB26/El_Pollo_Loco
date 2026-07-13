@@ -21,6 +21,7 @@ function init() {
 }
 init();
 
+// #region Startgame / restart 
 function startGame() {
     document.getElementById("startScreen").style.display = "none";
     document.getElementById("canvas").style.display = "block";
@@ -30,17 +31,10 @@ function startGame() {
 }
 window.startGame = startGame;
 
-function toggleSound() {
-    const manager = world ? world.sound : sound;
-    const muted = manager.toggleMute();
-    document.getElementById("sound-btn").src = muted ? "assets/icons/soundOff.png" : "assets/icons/soundOn.png";
-}
-window.toggleSound = toggleSound;
-
 function restartGame() {
     document.getElementById("game-over").classList.add("hidden");
     document.getElementById("you-win").classList.add("hidden");
-
+    
     world = new World(canvas, keyboard, createLevel1(), sound);
 }
 window.restartGame = restartGame;
@@ -55,7 +49,24 @@ function returnToMenu() {
     world = null;
 }
 window.returnToMenu = returnToMenu;
+// #endregion
 
+// #region Sounds
+function toggleSound() {
+    const manager = world ? world.sound : sound;
+    const muted = manager.toggleMute();
+    const desktop = document.getElementById("sound-btn");
+    const mobile = document.getElementById("mobile-sound");
+    const icon = muted
+        ? "assets/icons/soundOff.png"
+        : "assets/icons/soundOn.png";
+    if (desktop) desktop.src = icon;
+    if (mobile) mobile.src = icon;
+}
+window.toggleSound = toggleSound;
+// #endregion
+
+// #region Popup Windows
 window.toggleHelp = function() {
     document.getElementById("help-dialog").classList.toggle("hidden");
 };
@@ -63,6 +74,7 @@ window.toggleHelp = function() {
 window.toggleImprint = function () {
     document.getElementById("imprint-dialog").classList.toggle("hidden");
 };
+// #endregion
 
 // #region Fullscreen
 window.toggleFullscreen = function () {
@@ -102,3 +114,28 @@ window.addEventListener("keyup", (e) => {
     if (e.code == "KeyD") keyboard.D = false;
 });
 // #endregion
+
+const leftButton = document.getElementById("btn-left");
+const rightButton = document.getElementById("btn-right");
+const jumpButton = document.getElementById("btn-jump");
+const throwButton = document.getElementById("btn-throw");
+
+function bindTouch(button, key) {
+    if (!button) return;
+    button.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        keyboard[key] = true;
+    }, { passive: false });
+    button.addEventListener("touchend", (e) => {
+        e.preventDefault();
+        keyboard[key] = false;
+    });
+    button.addEventListener("touchcancel", () => {
+        keyboard[key] = false;
+    });
+}
+
+bindTouch(leftButton, "LEFT");
+bindTouch(rightButton, "RIGHT");
+bindTouch(jumpButton, "SPACE");
+bindTouch(throwButton, "D");

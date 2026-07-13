@@ -37,37 +37,40 @@
 
         <div id="help-dialog" class="hidden">
             <h2>Controls</h2>
-        <div class="control">
+            <div class="control">
             <img src="./assets/icons/arrowLeft.png" alt="arrowLeft">
             <p>Move Left</p>
-        </div>
-        <div class="control">
+            </div>
+            <div class="control">
             <img src="./assets/icons/arrowRight.png" alt="arrowRight">
             <p>Move Right</p>
-        </div>
-        <div class="control">
+            </div>
+            <div class="control">
             <img src="./assets/icons/space.png" alt="space">
             <p>Jump</p>
-        </div>
-        <div class="control">
+            </div>
+            <div class="control">
             <img src="./assets/icons/keyD.png" alt="taste d">
             <p>Throw Bottle</p>
-        </div>
+            </div>
             <button onclick="toggleHelp()">Close</button>
         </div>
-    </div>
 
-    <div id="imprint-dialog" class="dialog hidden">
-        <span class="close-btn" onclick="toggleImprint()">&times;</span>
-        <h2>Impressum</h2>
-        <p>
-        Matthäus Stojak<br>
-        Geht dich nichts an Straße 18<br>
-        12345 Japan
-        </p>
-        <p>
-        E-Mail: jdmfreak@googlemail.com
-        </p>
+        <div id="imprint-dialog" class="dialog hidden">
+            <span class="close-btn" onclick="toggleImprint()">&times;</span>
+            <h2>Impressum</h2>
+            <p>
+            Matthäus Stojak<br>Geht dich nichts an Straße 18<br>12345 Japan</p>
+            <p>E-Mail: jdmfreak@googlemail.com</p>
+        </div>
+
+        <div id="mobile-controls">
+            <button id="btn-left" class="mobile-btn"><img src="./assets/icons/mobileLeft.png" alt="left"></button>
+            <button id="btn-right" class="mobile-btn"><img src="./assets/icons/mobileRight.png" alt="right"></button>
+            <button id="btn-sound" class="mobile-btn" onclick="toggleSound()"><img id="mobile-sound" src="./assets/icons/soundOn.png"></button>
+            <button id="btn-jump" class="mobile-btn"><img src="./assets/icons/mobileJump.png" alt="jump"></button>
+            <button id="btn-throw" class="mobile-btn"><img src="./assets/icons/mobileThrow.png" alt="throw"></button>
+        </div>
     </div>
 
         <footer>
@@ -76,5 +79,9 @@
             <img onclick="toggleFullscreen()" id="open-fullscreen" class="fullscreen" src="./assets/icons/fullscreen.png"/>
             <img onclick="toggleImprint()" id="imprint-btn" class="info" src="./assets/icons/info-button.png" alt="impressum">
         </footer>
+
+        <div id="rotate-device">
+            <img src="assets/icons/turnDevice.png" alt="Handy drehen">
+        </div>
     </body>
 </html>

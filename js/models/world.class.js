@@ -138,23 +138,52 @@ export class World {
         this.statusBar.setPercentage(this.character.energy);
     }
 
-    checkBottleCollisions() {
-    this.throwableObjects.forEach(bottle => {this.level.enemies.forEach(enemy => { if (!bottle.isColliding(enemy) || bottle.isSplashing) return;
-        bottle.splash();
-        if (enemy instanceof Endboss) { enemy.hit();
-            this.endbossStatusBar.setPercentage(enemy.energy);
-        if (enemy.isDead() && !this.gameWon){
-            this.gameWon = true;
-            this.sound.play('win');
-            setTimeout(() => {this.gameOver = true;
-            document.getElementById('you-win').classList.remove('hidden');
-            }, 1000);
-        }} else 
-            {enemy.die();
-        } });
+//     checkBottleCollisions() {
+//     this.throwableObjects.forEach(bottle => {this.level.enemies.forEach(enemy => {
+//             if (!bottle.isColliding(enemy) || bottle.isSplashing) return;
+//             bottle.splash();
+//             if (!(enemy instanceof Endboss)) return enemy.die();
+//             enemy.hit();
+//             this.endbossStatusBar.setPercentage(enemy.energy);
+//             if (!enemy.isDead() || this.gameWon) return;
+//             this.gameWon = true;
+//             this.sound.stopMusic();
+//             this.sound.play("win");
+//             setTimeout(() => {
+//                 this.gameOver = true;
+//                 document.getElementById("you-win").classList.remove("hidden");
+//             }, 1000);
+//         });
+//     });
+//     this.throwableObjects = this.throwableObjects.filter(bottle => !bottle.markedForDeletion);
+// }
+
+checkBottleCollisions() {
+    this.throwableObjects.forEach(bottle => {
+        this.level.enemies.forEach(enemy => {
+            if (!bottle.isColliding(enemy) || bottle.isSplashing) return;
+            bottle.splash();
+            this.handleBottleHit(enemy);
+        });
     });
-    this.throwableObjects = this.throwableObjects.filter(bottle => !bottle.markedForDeletion);
-    }
+    this.throwableObjects = this.throwableObjects.filter(
+        bottle => !bottle.markedForDeletion
+    );
+}
+
+handleBottleHit(enemy) {
+    if (!(enemy instanceof Endboss)) return enemy.die();
+    enemy.hit();
+    this.endbossStatusBar.setPercentage(enemy.energy);
+    if (!enemy.isDead() || this.gameWon) return;
+    this.gameWon = true;
+    this.sound.stopMusic();
+    this.sound.play("win");
+    setTimeout(() => {
+        this.gameOver = true;
+        document.getElementById("you-win").classList.remove("hidden");
+    }, 1000);
+}
 
     checkCoinCollisions() {
         for (let i = this.level.coins.length - 1; i >= 0; i--) {
@@ -216,8 +245,7 @@ export class World {
         }
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
-        if (mo.otherDirection) {
-            this.flipImageBack(mo);
+        if (mo.otherDirection) {this.flipImageBack(mo);
         }
     }
 
@@ -237,6 +265,7 @@ export class World {
     this.gameOver = true;
     this.sound.stop("run");
     this.sound.stop("snoring");
+    this.sound.stopMusic();
     }
 
     addInterval(fn, time) {

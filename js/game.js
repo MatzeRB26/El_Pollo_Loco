@@ -28,19 +28,20 @@ function startGame() {
     const canvas = document.getElementById("canvas");
     world = new World(canvas, keyboard, createLevel1(), sound);
     world.sound.play("gameStart")
+    sound.playMusic();
 }
 window.startGame = startGame;
 
 function restartGame() {
     document.getElementById("game-over").classList.add("hidden");
     document.getElementById("you-win").classList.add("hidden");
-    
     world = new World(canvas, keyboard, createLevel1(), sound);
 }
 window.restartGame = restartGame;
 
 function returnToMenu() {
     if (world) {world.stopGame();}
+    sound.stopMusic();
     document.getElementById("game-over").classList.add("hidden");
     document.getElementById("you-win").classList.add("hidden");
     document.getElementById("canvas").style.display = "none";

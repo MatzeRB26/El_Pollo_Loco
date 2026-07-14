@@ -1,5 +1,10 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
+/**
+ * Represents a small chicken enemy.
+ * Handles movement, animations,
+ * and death behavior.
+*/
 export class SmallChicken extends MoveableObject {
     height = 50;
     width = 50;
@@ -23,7 +28,11 @@ export class SmallChicken extends MoveableObject {
         right: 5,
     };
 
-    constructor() { // mini Hünchen erscheinen random im spiel und laufen nach links 
+/**
+ * Creates a new small chicken with a random
+ * position and movement speed.
+*/
+    constructor() { 
         super();
         this.loadImage('assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -35,6 +44,9 @@ export class SmallChicken extends MoveableObject {
         this.dead = false;
     }
 
+/**
+ * Starts the movement and animation loops.
+*/
     animate() {
         this.moveInterval = setInterval(() => {
             if (this.world?.gameOver) return;
@@ -45,6 +57,10 @@ export class SmallChicken extends MoveableObject {
         }, 200);
     }
 
+/**
+ * Kills the small chicken, plays the death sound,
+ * and removes it after a short delay.
+*/
     die() {
         if (this.dead) return;
         this.dead = true;

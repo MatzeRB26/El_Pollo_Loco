@@ -1,5 +1,8 @@
 import { DrawableObject } from "./drawable-object.class.js";
 
+/**
+ * Displays the player's health status bar.
+*/
 export class StatusBar extends DrawableObject {
 
     IMAGES = [
@@ -13,6 +16,9 @@ export class StatusBar extends DrawableObject {
 
     percentage = 100;
 
+/**
+ * Creates a new health status bar.
+*/
     constructor() {
         super();
         this.loadImages(this.IMAGES);
@@ -23,14 +29,24 @@ export class StatusBar extends DrawableObject {
         this.width = 150;
     }
 
+/**
+ * Updates the displayed health percentage.
+ *
+ * @param {number} percentage - The current health percentage.
+*/
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
+/**
+ * Returns the image index for the current health percentage.
+ *
+ * @returns {number} The index of the corresponding status bar image.
+*/
     resolveImageIndex() {
-        if (this.percentage == 100) {
+        if (this.percentage === 100) {
             return 5;
         } else if (this.percentage > 80) {
             return 4;

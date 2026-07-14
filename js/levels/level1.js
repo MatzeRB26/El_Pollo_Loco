@@ -7,6 +7,12 @@ import { Endboss } from "../models/endboss.class.js";
 import { Coin } from "../models/coin.class.js";
 import { Bottle } from "../models/bottle.class.js";
 
+/**
+ * Creates and returns the first game level.
+ *
+ * @returns {Level} A fully initialized level containing enemies,
+ * clouds, collectibles, and background objects.
+*/
 export function createLevel1(){
     return new Level(
     [

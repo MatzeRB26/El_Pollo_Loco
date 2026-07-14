@@ -1,5 +1,10 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
+/**
+ * Represents the endboss enemy.
+ * Handles movement, animations,
+ * damage, and death behavior.
+*/
 export class Endboss extends MoveableObject {
     height = 400;
     width = 250;
@@ -10,7 +15,6 @@ export class Endboss extends MoveableObject {
     activated = false;
     alertPlayed = false;
     markedForDeletion = false;
-    deadAnimationFinished = false;
 
     IMAGES_WALKING = [
         "assets/img/4_enemie_boss_chicken/1_walk/G1.png",
@@ -60,6 +64,9 @@ export class Endboss extends MoveableObject {
         right: 50,
     };
 
+/**
+ * Creates a new endboss and loads all animations.
+*/
     constructor() {
         super();
         this.loadImage(this.IMAGES_WALKING[0]);
@@ -71,6 +78,9 @@ export class Endboss extends MoveableObject {
         this.animate();
     }
 
+/**
+ * Starts the endboss movement and animation loops.
+*/
     animate() {
     setInterval(() => {
         if (this.world?.gameOver) return;
@@ -88,11 +98,18 @@ export class Endboss extends MoveableObject {
     }, 120);
     }
 
+/**
+ * Activates the endboss when the player
+ * reaches the boss area.
+*/
     activate() {
         this.activated = true;
         this.currentImage = 0;
     }
 
+/**
+ * Reduces the endboss's health.
+*/
     hit() {
     if (this.isDead()) return;
     this.energy -= 20;
@@ -102,6 +119,9 @@ export class Endboss extends MoveableObject {
         }
     }
 
+/**
+ * Marks the endboss as dead.
+*/
     die() {
         this.dead = true;
     }

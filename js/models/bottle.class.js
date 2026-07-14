@@ -1,5 +1,8 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
+/**
+ * Represents a collectible salsa bottle.
+*/
 export class Bottle extends MoveableObject {
 
     IMAGES_BOTTLE_GROUND = [
@@ -13,7 +16,13 @@ export class Bottle extends MoveableObject {
         right: 10,
     };
 
-    constructor(x, y) { // Bottles erscheinen auf dem Boden und man kann diese einsammeln
+/**
+ * Creates a new collectible bottle.
+ *
+ * @param {number} x - The horizontal position.
+ * @param {number} y - The vertical position.
+*/
+    constructor(x, y) {
         super();
         this.loadImage(this.IMAGES_BOTTLE_GROUND[0]);
         this.x = x;

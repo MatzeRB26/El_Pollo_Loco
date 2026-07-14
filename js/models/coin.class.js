@@ -1,5 +1,9 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
+/**
+ * Represents a collectible coin.
+ * Handles the coin animation.
+*/
 export class Coin extends MoveableObject {
     height = 130;
     width = 130;
@@ -16,7 +20,13 @@ export class Coin extends MoveableObject {
         right: 45,
     };
 
-    constructor(x, y) {
+/**
+ * Creates a new coin.
+ *
+ * @param {number} x - The horizontal position.
+ * @param {number} y - The vertical position.
+*/
+    constructor(x) {
         super();
         this.loadImage('assets/img/8_coin/coin_2.png');
         this.loadImages(this.COIN_IMAGES);
@@ -26,6 +36,9 @@ export class Coin extends MoveableObject {
         this.getRealFrame();
     }
 
+/**
+ * Starts the coin animation.
+*/
     animate() {
         setInterval(() => {
             this.playAnimation(this.COIN_IMAGES);

@@ -1,5 +1,10 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
+/**
+ * Represents the playable character Pepe.
+ * Handles movement, animations, physics,
+ * and player interactions.
+*/
 export class Character extends MoveableObject {
     x = 0;
     y = 180;
@@ -82,6 +87,9 @@ export class Character extends MoveableObject {
         "assets/img/2_character_pepe/1_idle/long_idle/I-20.png",
     ];
 
+/**
+ * Creates a new character and loads all animations.
+*/
     constructor() {
         super();
         this.loadImage(this.IMAGES_WALKING[0]);
@@ -94,11 +102,18 @@ export class Character extends MoveableObject {
         this.collectedCoins = 0;
     }
 
+/**
+ * Starts the movement and animation loops.
+*/
     animate() {
         setInterval(() => this.moveCharacter(), 1000 / 60);
         setInterval(() => this.playCharacterAnimation(), 100);
     }
 
+/**
+ * Updates the character's movement,
+ * camera position, and running sound.
+*/
     moveCharacter() {
     if (this.world?.gameOver) return this.world.sound.stop("run");
     if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {this.moveRight();
@@ -115,6 +130,10 @@ export class Character extends MoveableObject {
     } this.world.camera_x = -this.x + 100;
     }
 
+/**
+ * Plays the correct animation depending on
+ * the character's current state.
+*/
     playCharacterAnimation() {
         if (this.isGameStopped()) return;
         if (this.isDead()) return this.handleDeath();
@@ -130,14 +149,26 @@ export class Character extends MoveableObject {
         this.playAnimation(this.IMAGES_IDLE);
     }
 
+/**
+ * Updates the timestamp of the player's last action.
+*/
     updateLastAction() {
         this.lastAction = Date.now();
     }
 
+/**
+ * Checks whether the character has been idle
+ * long enough to fall asleep.
+ *
+ * @returns {boolean} True if the character is sleeping.
+*/
     isSleeping() {
         return Date.now() - this.lastAction >= 10000;
     }
 
+/**
+ * Plays the death animation and ends the game.
+*/
     handleDeath() {
         this.playAnimation(this.IMAGES_DEAD, false);
         if (this.dead) return;

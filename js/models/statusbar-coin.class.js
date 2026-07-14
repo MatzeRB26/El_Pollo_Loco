@@ -1,5 +1,8 @@
 import { DrawableObject } from "./drawable-object.class.js";
 
+/**
+ * Displays the player's collected coin progress.
+*/
 export class CoinStatusBar extends DrawableObject {
 
     COIN_IMAGES = [
@@ -13,6 +16,9 @@ export class CoinStatusBar extends DrawableObject {
 
     percentage = 0;
 
+/**
+ * Creates a new coin status bar.
+*/
     constructor() {
         super();
         this.loadImages(this.COIN_IMAGES);
@@ -23,12 +29,22 @@ export class CoinStatusBar extends DrawableObject {
         this.width = 150;
     }
 
+/**
+ * Updates the displayed coin percentage.
+ *
+ * @param {number} percentage - The current coin percentage.
+*/
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.COIN_IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
+/**
+ * Returns the image index for the current coin percentage.
+ *
+ * @returns {number} The index of the corresponding status bar image.
+*/
     resolveImageIndex() {
     if (this.percentage >= 100) {
         return 5;

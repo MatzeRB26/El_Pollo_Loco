@@ -1,5 +1,8 @@
 import { DrawableObject } from "./drawable-object.class.js";
 
+/**
+ * Displays the player's collected bottle progress.
+*/
 export class BottleStatusBar extends DrawableObject {
 
     IMAGES_BOTTLE_GROUND = [
@@ -13,6 +16,9 @@ export class BottleStatusBar extends DrawableObject {
 
     percentage = 0;
 
+/**
+ * Creates a new bottle status bar.
+*/
     constructor() {
         super();
         this.loadImages(this.IMAGES_BOTTLE_GROUND);
@@ -23,12 +29,22 @@ export class BottleStatusBar extends DrawableObject {
         this.width = 150;
     }
 
+/**
+ * Updates the displayed bottle percentage.
+ *
+ * @param {number} percentage - The current bottle percentage.
+*/
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.IMAGES_BOTTLE_GROUND[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
+/**
+ * Returns the image index for the current bottle percentage.
+ *
+ * @returns {number} The index of the corresponding status bar image.
+*/
     resolveImageIndex() {
         if (this.percentage >= 100) {
             return 5;

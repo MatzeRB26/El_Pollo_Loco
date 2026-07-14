@@ -1,5 +1,10 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
+/**
+ * Represents a normal chicken enemy.
+ * Handles movement, animations,
+ * and death behavior.
+*/
 export class Chicken extends MoveableObject {
     height = 60;
     width = 80;
@@ -23,7 +28,11 @@ export class Chicken extends MoveableObject {
         right: 5,
     };
 
-    constructor() { // Hünchen erscheinen random im spiel und laufen nach links 
+/**
+ * Creates a new chicken with a random
+ * position and movement speed.
+*/
+    constructor() { 
         super();
         this.loadImage('assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -35,6 +44,9 @@ export class Chicken extends MoveableObject {
         this.dead = false;
     }
 
+/**
+ * Starts the movement and animation loops.
+*/
     animate() {
         this.moveInterval = setInterval(() => {
             if (this.world?.gameOver) return;
@@ -45,6 +57,10 @@ export class Chicken extends MoveableObject {
         }, 200);
     }
 
+/**
+ * Kills the chicken, plays the death sound,
+ * and removes it after a short delay.
+*/
     die() {
         if (this.dead) return;
         this.dead = true;

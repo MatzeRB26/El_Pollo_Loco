@@ -1,5 +1,10 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
+/**
+ * Represents a throwable salsa bottle.
+ * Handles movement, rotation, gravity,
+ * splash animation, and collisions.
+*/
 export class ThrowableObject extends MoveableObject {
     width = 80;
     height = 80;
@@ -23,6 +28,13 @@ export class ThrowableObject extends MoveableObject {
         "assets/img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png",
     ];
 
+/**
+ * Creates a new throwable bottle.
+ *
+ * @param {number} x - The initial x position.
+ * @param {number} y - The initial y position.
+ * @param {boolean} otherDirection - Indicates whether the bottle is thrown to the left.
+*/
     constructor(x, y, otherDirection) {
         super();
         this.loadImage(this.IMAGES_BOTTLE_ROTATION[0]);
@@ -37,6 +49,9 @@ export class ThrowableObject extends MoveableObject {
         this.animate();
     }
 
+/**
+ * Throws the bottle and applies gravity.
+*/
     throw() {
     this.speedY = 25;
     this.applyGravity();
@@ -51,6 +66,9 @@ export class ThrowableObject extends MoveableObject {
     }, 1000 / 25);
 }
 
+/**
+ * Starts the bottle animation.
+*/
     animate() {
         this.animationInterval = setInterval(() => {
             if (this.isGameStopped()) return;
@@ -60,12 +78,19 @@ export class ThrowableObject extends MoveableObject {
         }, 100);
     }
 
+/**
+ * Checks whether the bottle has hit the ground.
+*/
     checkGroundHit() {
         if (!this.isAboveGround() && this.speedY <= 0) {
             this.splash();
         }
     }
 
+/**
+ * Starts the bottle splash animation
+ * and stops all bottle movement.
+*/
     splash() {
         if (this.isSplashing) return;
         this.isSplashing = true;
@@ -76,9 +101,13 @@ export class ThrowableObject extends MoveableObject {
         this.playSplash();
     }
 
+/**
+ * Plays the bottle splash animation
+ * and marks the bottle for deletion.
+*/
     playSplash() {
         let image = 0;
-        let interval = setInterval(() => {
+        const interval = setInterval(() => {
             this.img = this.imageCache[this.IMAGES_BOTTLE_SPLASH[image]];
             image++;
             if (image >= this.IMAGES_BOTTLE_SPLASH.length) {
@@ -88,7 +117,13 @@ export class ThrowableObject extends MoveableObject {
         }, 60);
     }
 
+/**
+ * Checks whether the bottle is still above the ground.
+ *
+ * @returns {boolean} True if the bottle is in the air.
+*/
     isAboveGround() {
         return this.y < 360;
     }
 }
+

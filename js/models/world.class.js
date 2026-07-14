@@ -211,26 +211,35 @@ handleBottleHit(enemy) {
     }
 
     draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToMap(this.level.backgroundObjects);
-        this.addObjectsToMap(this.level.clouds);
-        this.ctx.translate(-this.camera_x, 0); // StatusBar geht mit zurück wenn die Camera sich bewegt
-        this.addToMap(this.statusBar);
-        this.addToMap(this.coinStatusBar);
-        this.addToMap(this.bottleStatusBar);
-        this.addToMap(this.endbossStatusBar);
-        this.ctx.translate(this.camera_x, 0); // StatusBar geht mit vorwärts wenn die Camera sich bewegt
-        this.addToMap(this.character);
-        this.addObjectsToMap(this.level.coins);
-        this.addObjectsToMap(this.level.bottles);
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.throwableObjects);
-        this.ctx.translate(-this.camera_x, 0);
-        let self = this; // diese function arbeitet erst dann wenn alles vorgezeichnet ist aus dem DrawImage(draw wird immer wieder aufgerufen)
-        requestAnimationFrame(function () {
-            self.draw();
-        });
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.translate(this.camera_x, 0);
+    this.drawBackground();
+    this.ctx.translate(-this.camera_x, 0);
+    this.drawStatusBars();
+    this.ctx.translate(this.camera_x, 0);
+    this.drawGameObjects();
+    this.ctx.translate(-this.camera_x, 0);
+    requestAnimationFrame(() => this.draw());
+    }
+
+    drawBackground() {
+    this.addObjectsToMap(this.level.backgroundObjects);
+    this.addObjectsToMap(this.level.clouds);
+    }
+
+    drawStatusBars() {
+    this.addToMap(this.statusBar);
+    this.addToMap(this.coinStatusBar);
+    this.addToMap(this.bottleStatusBar);
+    this.addToMap(this.endbossStatusBar);
+    }
+
+    drawGameObjects() {
+    this.addToMap(this.character);
+    this.addObjectsToMap(this.level.coins);
+    this.addObjectsToMap(this.level.bottles);
+    this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.throwableObjects);
     }
 
     addObjectsToMap(objects) {

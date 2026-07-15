@@ -1,11 +1,3 @@
-// import { MoveableObject } from "./models/moveable-object.class.js";
-// import { DrawableObject } from "./models/drawable-object.class.js";
-// import { ThrowableObject } from "./models/throwable-object.class.js";
-// import { StatusBar } from "./models/statusbar.class.js";
-// import { Character } from "./models/character.class.js";
-// import { Chicken } from "./models/chicken.class.js";
-// import { Endboss } from "./models/endboss.class.js";
-// import { Coin } from "./models/coin.class.js";
 import { World } from "./models/world.class.js";
 import { Keyboard } from "./models/keyboard.class.js";
 import { createLevel1 } from "./levels/level1.js";

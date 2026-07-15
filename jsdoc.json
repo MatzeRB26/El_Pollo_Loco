@@ -1,0 +1,28 @@
+{
+  "source": {
+    "include": ["js/levels/level1.js",
+    "js/models/background-object.class.js",
+    "js/models/bottle.class.js",
+    "js/models/character.class.js",
+    "js/models/chicken.class.js",
+    "js/models/cloud.class.js",
+    "js/models/coin.class.js",
+    "js/models/drawable-object.class.js",
+    "js/models/endboss.class.js",
+    "js/models/keyboard.class.js",
+    "js/models/level.class.js",
+    "js/models/moveable-object.class.js",
+    "js/models/small-chicken.class.js",
+    "js/models/sound-manager.class.js",
+    "js/models/statusbar-bottle.class.js",
+    "js/models/statusbar-coin.class.js",
+    "js/models/statusbar-endboss.class.js",
+    "js/models/statusbar.class.js",
+    "js/models/throwable-object.class.js",
+    "js/models/world.class.js",
+    "js/game.js"]
+  },
+  "opts": {
+    "destination": "./out"
+  }
+}

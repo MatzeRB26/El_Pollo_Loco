@@ -1,6 +1,7 @@
 import { DrawableObject } from "./drawable-object.class.js";
 
 /**
+ * @class
  * Displays the player's health status bar.
 */
 export class StatusBar extends DrawableObject {

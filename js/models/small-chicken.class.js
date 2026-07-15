@@ -1,6 +1,7 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
 /**
+ * @class
  * Represents a small chicken enemy.
  * Handles movement, animations,
  * and death behavior.

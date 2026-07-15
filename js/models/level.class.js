@@ -1,4 +1,5 @@
 /**
+ * @class
  * Represents a game level.
  * Stores all objects that belong to a level.
 */

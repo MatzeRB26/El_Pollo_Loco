@@ -1,6 +1,7 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
 /**
+ * @class
  * Represents a collectible coin.
  * Handles the coin animation.
 */

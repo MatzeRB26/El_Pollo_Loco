@@ -1,6 +1,7 @@
 import { DrawableObject } from "./drawable-object.class.js";
 
 /**
+ * @class
  * Base class for all movable game objects.
  * Provides movement, gravity, collisions,
  * animations, and health management.

@@ -1,6 +1,7 @@
 import { DrawableObject } from "./drawable-object.class.js";
 
 /**
+ * @class
  * Displays the player's collected coin progress.
 */
 export class CoinStatusBar extends DrawableObject {

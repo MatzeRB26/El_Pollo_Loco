@@ -1,4 +1,5 @@
 /**
+ * @class
  * Base class for all drawable game objects.
  * Handles image loading and rendering on the canvas.
 */

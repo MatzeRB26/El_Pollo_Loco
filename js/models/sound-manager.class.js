@@ -1,4 +1,5 @@
 /**
+ * @class
  * Manages all game sounds and background music.
 */
 export class SoundManager {

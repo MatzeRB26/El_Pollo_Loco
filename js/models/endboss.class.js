@@ -1,6 +1,7 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
 /**
+ * @class
  * Represents the endboss enemy.
  * Handles movement, animations,
  * damage, and death behavior.

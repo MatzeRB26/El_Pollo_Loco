@@ -1,6 +1,7 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
 /**
+ * @class
  * Represents the playable character Pepe.
  * Handles movement, animations, physics,
  * and player interactions.

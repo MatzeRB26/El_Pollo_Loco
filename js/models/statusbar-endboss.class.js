@@ -1,6 +1,7 @@
 import { DrawableObject } from "./drawable-object.class.js";
 
 /**
+ * @class
  * Displays the endboss health status bar.
 */
 export class EndbossStatusBar extends DrawableObject {

@@ -1,6 +1,7 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
 /**
+ * @class
  * Represents a static background image.
 */
 export class BackgroundObject extends MoveableObject {

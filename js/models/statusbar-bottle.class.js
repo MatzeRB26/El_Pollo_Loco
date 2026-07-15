@@ -1,6 +1,7 @@
 import { DrawableObject } from "./drawable-object.class.js";
 
 /**
+ * @class
  * Displays the player's collected bottle progress.
 */
 export class BottleStatusBar extends DrawableObject {

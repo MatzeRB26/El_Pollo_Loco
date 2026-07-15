@@ -45,6 +45,7 @@ export class Chicken extends MoveableObject {
     }
 
 /**
+ * @class
  * Starts the movement and animation loops.
 */
     animate() {

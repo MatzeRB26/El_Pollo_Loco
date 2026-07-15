@@ -1,6 +1,7 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
 /**
+ * @class
  * Represents a throwable salsa bottle.
  * Handles movement, rotation, gravity,
  * splash animation, and collisions.

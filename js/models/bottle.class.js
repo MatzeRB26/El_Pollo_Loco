@@ -1,6 +1,7 @@
 import { MoveableObject } from "./moveable-object.class.js";
 
 /**
+ * @class
  * Represents a collectible salsa bottle.
 */
 export class Bottle extends MoveableObject {

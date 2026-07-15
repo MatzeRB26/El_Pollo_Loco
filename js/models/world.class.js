@@ -10,6 +10,7 @@ import { BottleStatusBar } from "./statusbar-bottle.class.js";
 import { EndbossStatusBar } from "./statusbar-endboss.class.js";
 
 /**
+ * @class
  * Represents the game world.
  * Manages rendering, collisions, enemies, collectibles,
  * player interactions, and game state.

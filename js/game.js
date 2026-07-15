@@ -4,11 +4,11 @@
 // import { StatusBar } from "./models/statusbar.class.js";
 // import { Character } from "./models/character.class.js";
 // import { Chicken } from "./models/chicken.class.js";
+// import { Endboss } from "./models/endboss.class.js";
+// import { Coin } from "./models/coin.class.js";
 import { World } from "./models/world.class.js";
 import { Keyboard } from "./models/keyboard.class.js";
-// import { Endboss } from "./models/endboss.class.js";
 import { createLevel1 } from "./levels/level1.js";
-// import { Coin } from "./models/coin.class.js";
 import { SoundManager } from "./models/sound-manager.class.js";
 
 let canvas;
@@ -121,7 +121,7 @@ function closefullscreen() {
 }
 
 
-// #region Keyboard
+// #region Play-Buttons
 window.addEventListener("keydown", (e) => {
     if (e.code == "ArrowLeft") keyboard.LEFT = true;
     if (e.code == "ArrowRight") keyboard.RIGHT = true;
@@ -139,7 +139,7 @@ window.addEventListener("keyup", (e) => {
     if (e.code == "Space") keyboard.SPACE = false;
     if (e.code == "KeyD") keyboard.D = false;
 });
-// #endregion
+
 
 const leftButton = document.getElementById("btn-left");
 const rightButton = document.getElementById("btn-right");
@@ -171,3 +171,4 @@ bindTouch(leftButton, "LEFT");
 bindTouch(rightButton, "RIGHT");
 bindTouch(jumpButton, "SPACE");
 bindTouch(throwButton, "D");
+// #endregion

@@ -82,10 +82,11 @@ h1 {
 }
 
 /* #region Home / Return Button */
-.endscreen-button{
+.endscreen-button {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
 }
 
 .endscreen-button img {
@@ -176,7 +177,8 @@ footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 720px;
+    width: 100%;
+    max-width: 720px;
     padding-top: 24px;
     padding-bottom: 32px;
     background-color: rgb(153, 68, 9);
@@ -348,7 +350,7 @@ footer {
 }
 /* #endregion */
 
-/* #region Responsive */
+/* #region TouchButtons */
 #rotate-device{
     position:fixed;
     inset:0;
@@ -362,15 +364,19 @@ footer {
     width:220px;
 }
 
-#mobile-controls{
-    position:absolute;
-    left:20px;
-    right:20px;
-    bottom:20px;
-    display:none;
-    justify-content:space-between;
-    align-items:flex-end;
-    z-index:500;
+#mobile-controls {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    display: none;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 500;
+}
+
+.mobile-hidden {
+    display: none;
 }
 
 .mobile-btn{
@@ -424,60 +430,111 @@ footer {
     width:25px;
     height:25px;
 }
+/* #endregion */
 
-@media (max-width:768px) and (orientation:landscape) {
-    #startScreen{
-        width:100%;
-        height:100%;
+/* #region Responsive */
+@media (max-width: 768px) and (orientation: landscape) {
+    h1 {
+        display: none;
     }
 
-    #startScreen img{
-        width:100%;
-        height:100%;
-        object-fit:cover;
+    footer {
+        display: none;
     }
 
-    #startScreen button{
-        top:50px;
-        font-size:24px;
-        padding:12px 32px;
+    #game-container {
+        width: min(100vw, calc(100vh * 1.5));
+        height: min(100vh, calc(100vw / 1.5));
     }
 
-    h1{
-        display:none;
+    #canvas {
+        width: 100%;
+        height: 100%;
     }
 
-    footer{
-        display:none;
+    #mobile-controls:not(.mobile-hidden) {
+        display: flex;
     }
 
-    #game-container{
-    width:min(100vw, calc(100vh * 1.5));
-    height:min(100vh, calc(100vw / 1.5));
+    body {
+        overflow: hidden;
     }
 
-    #canvas{
-        width:100%;
-        height:100%;
+    #game-over:not(.hidden) ~ #mobile-controls,
+    #you-win:not(.hidden) ~ #mobile-controls {
+    display: none;
     }
 
-    #mobile-controls{
-        display:block;
+    .endscreen-img{
+        width:75%;
+        max-width:520px;
+        height:auto;
+        object-fit:contain;
     }
 
+    .endscreen-button{
+        position:absolute;
+        inset:0;
+    }
+    
     #home {
-    bottom: 50px;
-    left: 250px;
-}
-
-#restart {
-    bottom: 50px;
-    right: 250px;
-}
-
-    body{
-        overflow:hidden;
+    width: 60px;
+    height: 50px;
+    bottom: 20px;
+    left: 50px;
     }
+
+    #restart {
+    width: 60px;
+    height: 50px;
+    bottom: 20px;
+    right: 50px;
+    }
+
+    .endscreen-button img {
+    width: 20px;
+    height: 20px;
+}
+}
+
+@media (max-width: 720px) and (orientation: portrait) {
+
+    h1,
+    footer,
+    #game-container {
+        display: none;
+    }
+
+    #rotate-device {
+        display: flex;
+    }
+
+    #mobile-controls:not(.mobile-hidden) {
+    display: flex;
+    }
+}
+
+@media (max-width: 720px), (max-height: 480px) {
+    #game-container {
+        width: 100vw;
+        height: calc(100vw * 2 / 3);
+        max-width: calc(100vh * 3 / 2);
+        max-height: 100vh;
+    }
+
+    .endscreen-button img {
+        width: 70px;
+        height: 70px;
+    }
+
+    #mobile-controls:not(.mobile-hidden) {
+    display: flex;
+    }
+
+    #game-over:not(.hidden) ~ #mobile-controls,
+    #you-win:not(.hidden) ~ #mobile-controls {
+    display: none;
+}
 }
 
 @media (max-width:720px) and (orientation:portrait){
@@ -486,9 +543,18 @@ footer {
     #game-container{
         display:none;
     }
-
+    
     #rotate-device{
         display:flex;
     }
+
+    #mobile-controls:not(.mobile-hidden) {
+    display: flex;
+    }
+
+    #game-over:not(.hidden) ~ #mobile-controls,
+    #you-win:not(.hidden) ~ #mobile-controls {
+    display: none;
+}
 }
 /* #endregion */

@@ -13,29 +13,43 @@ let sound = new SoundManager();
 */
 function init() {
     canvas = document.getElementById("canvas");
+    document.getElementById("mobile-controls").style.display = "none";
 }
 init();
+updateSoundIcon();
 
 /**
  * Starts a new game.
  * Creates the game world and starts the background music.
-*/
+ */
 function startGame() {
     document.getElementById("startScreen").style.display = "none";
     document.getElementById("canvas").style.display = "block";
-    const canvas = document.getElementById("canvas");
+    document.getElementById("open-fullscreen").classList.remove("hidden");
+    const mobileControls = document.getElementById("mobile-controls");
+    if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
+        mobileControls.style.display = "flex";
+    } else {
+        mobileControls.style.display = "none";
+    }
     world = new World(canvas, keyboard, createLevel1(), sound);
-    world.sound.play("gameStart")
+    world.sound.play("gameStart");
     sound.playMusic();
 }
 window.startGame = startGame;
 
 /**
  * Restarts the current game.
-*/
+ */
 function restartGame() {
     document.getElementById("game-over").classList.add("hidden");
     document.getElementById("you-win").classList.add("hidden");
+    const mobileControls = document.getElementById("mobile-controls");
+    if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
+        mobileControls.style.display = "flex";
+    } else {
+        mobileControls.style.display = "none";
+    }
     world = new World(canvas, keyboard, createLevel1(), sound);
     world.sound.play("gameStart");
     world.sound.playMusic();
@@ -44,14 +58,18 @@ window.restartGame = restartGame;
 
 /**
  * Stops the current game and returns to the start screen.
-*/
+ */
 function returnToMenu() {
-    if (world) {world.stopGame();}
+    if (world) {
+        world.stopGame();
+    }
     sound.stopMusic();
     document.getElementById("game-over").classList.add("hidden");
     document.getElementById("you-win").classList.add("hidden");
     document.getElementById("canvas").style.display = "none";
     document.getElementById("startScreen").style.display = "flex";
+    document.getElementById("mobile-controls").style.display = "none";
+    document.getElementById("open-fullscreen").classList.add("hidden");
 
     world = null;
 }
@@ -63,16 +81,24 @@ window.returnToMenu = returnToMenu;
 */
 function toggleSound() {
     const manager = world ? world.sound : sound;
-    const muted = manager.toggleMute();
+    manager.toggleMute();
+    updateSoundIcon();
+}
+window.toggleSound = toggleSound;
+
+/**
+ * Updates the sound button icons
+ * based on the current mute state.
+*/
+function updateSoundIcon() {
+    const icon = sound.muted
+        ? "./assets/icons/soundOff2.png"
+        : "./assets/icons/soundOn2.png";
     const desktop = document.getElementById("sound-btn");
     const mobile = document.getElementById("mobile-sound");
-    const icon = muted
-        ? "assets/icons/soundOff.png"
-        : "assets/icons/soundOn.png";
     if (desktop) desktop.src = icon;
     if (mobile) mobile.src = icon;
 }
-window.toggleSound = toggleSound;
 
 /**
  * Shows or hides the help dialog.
@@ -93,9 +119,9 @@ window.toggleImprint = function () {
  * Toggles fullscreen mode for the game canvas.
 */
 window.toggleFullscreen = function () {
-    let canvas = document.getElementById("canvas");
+    const gameContainer = document.getElementById("game-container");
     if (!document.fullscreenElement) {
-        canvas.requestFullscreen();
+        gameContainer.requestFullscreen();
     } else {
         document.exitFullscreen();
     }

@@ -30,7 +30,7 @@ export class World {
     endbossStatusBar = new EndbossStatusBar();
     collectedCoins = 0;
     maxCoins = 10;
-    maxBottles = 10;
+    maxBottles = 5;
     gameWon = false;
     gameOver = false;
     interval = [];
@@ -78,6 +78,7 @@ export class World {
             this.checkThrowObjects();
             this.checkBottleCollisions();
             this.checkBottlePickup();
+            this.checkEndbossPassed();
             this.level.enemies = this.level.enemies.filter(
                 (enemy) => !enemy.markedForDeletion,
             );
@@ -185,6 +186,22 @@ export class World {
     }
 
 /**
+ * Ends the game if the endboss passes the character.
+*/
+checkEndbossPassed() {
+    const boss = this.level.enemies.find(enemy => enemy instanceof Endboss);
+    if (!boss || !boss.activated || boss.isDead()) return;
+    if (boss.x + boss.width + 40 < this.character.x) {
+        this.gameOver = true;
+        this.stopGame();
+        setTimeout(() => {
+            document.getElementById("mobile-controls").style.display = "none";
+            document.getElementById("game-over").classList.remove("hidden");
+        }, 500);
+    }
+    }
+
+/**
  * Checks collisions between thrown bottles and enemies.
 */
 checkBottleCollisions() {
@@ -215,6 +232,7 @@ handleBottleHit(enemy) {
     this.sound.play("win");
     setTimeout(() => {
         this.gameOver = true;
+        document.getElementById("mobile-controls").style.display = "none";
         document.getElementById("you-win").classList.remove("hidden");
     }, 1000);
 }
@@ -240,15 +258,18 @@ handleBottleHit(enemy) {
     checkBottlePickup() {
     for (let i = this.level.bottles.length - 1; i >= 0; i--) {
         let bottle = this.level.bottles[i];
-        if (this.character.isColliding(bottle)) {
-            this.sound.play('bottleCollect');
+        if (
+            this.character.isColliding(bottle) &&
+            this.character.collectedBottles < this.maxBottles
+        ) {
+            this.sound.play("bottleCollect");
             this.level.bottles.splice(i, 1);
             this.character.collectedBottles++;
             let p = (this.character.collectedBottles / this.maxBottles) * 100;
             this.bottleStatusBar.setPercentage(p);
         }
-        }
     }
+}
 
 /**
  * Draws the current game frame.

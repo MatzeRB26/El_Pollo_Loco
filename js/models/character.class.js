@@ -176,6 +176,7 @@ export class Character extends MoveableObject {
         this.dead = true;
         this.world.stopGame();
         setTimeout(() => {
+            document.getElementById("mobile-controls").style.display = "none";
             document.getElementById("game-over").classList.remove("hidden");
             this.world.gameOver = true;
         }, 500);

@@ -12,11 +12,12 @@ export class SoundManager {
     constructor() {
     this.loadSounds();
     this.muted = localStorage.getItem("muted") === "true";
-    Object.values(this.sounds).forEach(sound => { sound.muted = this.muted;
+    Object.values(this.sounds).forEach(sound => {
+        sound.muted = this.muted;
     });
     this.sounds.music.loop = true;
     this.sounds.music.volume = 0.1;
-    }
+}
 
 /**
  * Loads all game sound effects and music.

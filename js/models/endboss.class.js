@@ -84,8 +84,8 @@ export class Endboss extends MoveableObject {
 */
     animate() {
     setInterval(() => {
-        if (this.world?.gameOver) return;
-        if (this.activated && !this.isDead()) this.moveLeft();
+    if (this.world?.gameOver) return;
+    if (this.activated && !this.isDead()) {this.moveLeft();}
     }, 1000 / 60);
     setInterval(() => {
         if (this.isGameStopped()) return;

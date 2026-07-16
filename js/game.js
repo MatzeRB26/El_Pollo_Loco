@@ -27,11 +27,7 @@ function startGame() {
     document.getElementById("canvas").style.display = "block";
     document.getElementById("open-fullscreen").classList.remove("hidden");
     const mobileControls = document.getElementById("mobile-controls");
-    if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
-        mobileControls.style.display = "flex";
-    } else {
-        mobileControls.style.display = "none";
-    }
+    if (window.innerWidth <= 1366) { mobileControls.style.display = "flex";}
     world = new World(canvas, keyboard, createLevel1(), sound);
     world.sound.play("gameStart");
     sound.playMusic();
@@ -45,11 +41,8 @@ function restartGame() {
     document.getElementById("game-over").classList.add("hidden");
     document.getElementById("you-win").classList.add("hidden");
     const mobileControls = document.getElementById("mobile-controls");
-    if (window.matchMedia("(max-width: 768px) and (orientation: landscape)").matches) {
-        mobileControls.style.display = "flex";
-    } else {
-        mobileControls.style.display = "none";
-    }
+    if (window.innerWidth <= 1366) { mobileControls.style.display = "flex";
+    } else { mobileControls.style.display = "none";}
     world = new World(canvas, keyboard, createLevel1(), sound);
     world.sound.play("gameStart");
     world.sound.playMusic();

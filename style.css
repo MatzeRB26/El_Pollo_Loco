@@ -1,3 +1,4 @@
+/* #region fonts */
 @font-face {
     font-family: "zabars";
     src: url("./assets/fonts/zabars.ttf");
@@ -7,6 +8,7 @@
     font-family: "WaitNotes";
     src: url("./assets/fonts/WaitNotes.ttf");
 }
+/* #endregion */
 
 * {
     margin: 0;
@@ -365,14 +367,7 @@ footer {
 }
 
 #mobile-controls {
-    position: absolute;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
     display: none;
-    justify-content: space-between;
-    align-items: flex-end;
-    z-index: 500;
 }
 
 .mobile-hidden {
@@ -453,7 +448,7 @@ footer {
     }
 
     #mobile-controls:not(.mobile-hidden) {
-        display: flex;
+    display: flex;
     }
 
     body {
@@ -508,53 +503,44 @@ footer {
     #rotate-device {
         display: flex;
     }
-
-    #mobile-controls:not(.mobile-hidden) {
-    display: flex;
-    }
 }
 
-@media (max-width: 720px), (max-height: 480px) {
-    #game-container {
-        width: 100vw;
-        height: calc(100vw * 2 / 3);
-        max-width: calc(100vh * 3 / 2);
-        max-height: 100vh;
-    }
-
-    .endscreen-button img {
-        width: 70px;
-        height: 70px;
-    }
-
-    #mobile-controls:not(.mobile-hidden) {
-    display: flex;
-    }
-
-    #game-over:not(.hidden) ~ #mobile-controls,
-    #you-win:not(.hidden) ~ #mobile-controls {
-    display: none;
-}
-}
-
-@media (max-width:720px) and (orientation:portrait){
-    h1,
-    footer,
-    #game-container{
-        display:none;
-    }
-    
-    #rotate-device{
+/* iPad Pro 11" und 12.9" im Querformat */
+@media only screen and (min-width:1024px) and (max-width:1366px) and (orientation:landscape){
+    #mobile-controls:not(.mobile-hidden){
         display:flex;
     }
 
-    #mobile-controls:not(.mobile-hidden) {
-    display: flex;
+    .mobile-btn{
+        width:65px;
+        height:65px;
     }
 
-    #game-over:not(.hidden) ~ #mobile-controls,
-    #you-win:not(.hidden) ~ #mobile-controls {
-    display: none;
+    .mobile-btn img{
+        width:40px;
+        height:40px;
+    }
+
+    #mobile-sound{
+        width:35px;
+        height:35px;
+    }
 }
+
+@media (min-width: 768px) and (orientation: portrait) {
+    .mobile-btn{
+        width:70px;
+        height:70px;
+    }
+
+    .mobile-btn img{
+        width:45px;
+        height:45px;
+    }
+
+    #mobile-sound{
+        width:40px;
+        height:40px;
+    }
 }
 /* #endregion */

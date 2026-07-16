@@ -525,6 +525,10 @@ footer {
         width:35px;
         height:35px;
     }
+
+    footer {
+        display: none;
+    }
 }
 
 @media (min-width: 768px) and (orientation: portrait) {
@@ -541,6 +545,10 @@ footer {
     #mobile-sound{
         width:40px;
         height:40px;
+    }
+
+    footer {
+        display: none;
     }
 }
 /* #endregion */
